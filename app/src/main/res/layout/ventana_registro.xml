@@ -9,7 +9,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="194dp"
-        android:background="@color/pink"
+        android:background="@drawable/borde_cabecera"
         android:layout_marginBottom="45dp">
 
         <TextView
@@ -34,9 +34,9 @@
 
     <FrameLayout
         android:layout_width="360dp"
-        android:layout_height="449dp"
+        android:layout_height="457dp"
         android:layout_marginLeft="25dp"
-        android:background="@color/pink_light">
+        android:background="@drawable/borde_form">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,10 +48,11 @@
                 android:id="@+id/inputNombre"
                 android:layout_width="150dp"
                 android:layout_height="43dp"
+                android:paddingLeft="10dp"
                 android:layout_gravity="start"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/pink_light_light"
+                android:background="@drawable/borde_input"
                 android:hint="Nombre" />
 
             <EditText
@@ -59,8 +60,9 @@
                 android:layout_width="150dp"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
+                android:paddingLeft="10dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/pink_light_light"
+                android:background="@drawable/borde_input"
                 android:hint="Apellidos" />
 
         </LinearLayout>
@@ -79,7 +81,8 @@
                 android:layout_height="43dp"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"
-                android:background="@color/pink_light_light"
+                android:paddingLeft="10dp"
+                android:background="@drawable/borde_input"
                 android:hint="Nombre de usuario" />
 
             <EditText
@@ -89,7 +92,8 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/pink_light_light"
+                android:paddingLeft="10dp"
+                android:background="@drawable/borde_input"
                 android:hint="Email" />
 
             <EditText
@@ -100,28 +104,31 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
-                android:background="@color/pink_light_light"
+                android:paddingLeft="10dp"
+                android:background="@drawable/borde_input"
                 android:hint="Contraseña" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿Ya tiene cuenta?"
                 android:gravity="center"
-                android:textColor="@color/black"/>
+                android:text="¿Ya tiene cuenta?"
+                android:textColor="@color/black" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/pink_light_light"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borde_boton"
                 android:text="Registrar" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/pink_light_light"
+                android:background="@drawable/borde_boton"
                 android:text="Cancelar" />
         </LinearLayout>
     </FrameLayout>
