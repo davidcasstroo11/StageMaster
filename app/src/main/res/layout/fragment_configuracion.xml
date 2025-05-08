@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/borde_cabecera">
+
+        <TextView
+            android:id="@+id/textRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Ajustes generales"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="217dp"
+            android:layout_height="153dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/logo" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="371dp"
+        android:layout_marginLeft="25dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textDatosPersonales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Datos personales"
+            android:textColor="@color/pink"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/textMisDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="7dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Mis datos"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+
+        <TextView
+            android:id="@+id/textRestablecerContraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Restablecer contraseña"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+
+        <TextView
+            android:id="@+id/textModificarUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Modificar nombre de usuario"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+
+        <TextView
+            android:id="@+id/textSistema"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="30dp"
+            android:text="Sistema"
+            android:textColor="@color/pink"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/textCerrarSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="7dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Cerrar sesión"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+
+        <TextView
+            android:id="@+id/textSalir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Salir"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+    </LinearLayout>
+</LinearLayout>

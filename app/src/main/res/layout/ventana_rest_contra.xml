@@ -28,7 +28,7 @@
             android:layout_width="217dp"
             android:layout_height="113dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/adobe_express___file" />
+            android:src="@drawable/logo" />
     </FrameLayout>
 
     <FrameLayout
@@ -49,12 +49,12 @@
                 android:id="@+id/txt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:fontFamily="sans-serif-black"
-                android:textColor="@color/black"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="Ingresa tu nueva contraseña en los campos a continuación. Asegurate de que sea segura y fácil de recordar" />
+                android:fontFamily="sans-serif-black"
+                android:text="Ingresa tu nueva contraseña en los campos a continuación. Asegurate de que sea segura y fácil de recordar"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/inputNombreUsuario"

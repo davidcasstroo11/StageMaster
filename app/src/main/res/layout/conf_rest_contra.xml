@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/borde_cabecera">
+
+        <TextView
+            android:id="@+id/textRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Ajustes generales"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="460dp"
+        android:layout_marginLeft="25dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textRestablecerContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:text="Restablecer\ncontraseña"
+            android:textColor="@color/pink"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/textMisDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Contraseña"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+
+        <EditText
+            android:id="@+id/inputContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/borde_input"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Repite contraseña"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+
+        <EditText
+            android:id="@+id/inputContraseñaRepite"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/borde_input"
+            android:paddingLeft="10dp" />
+
+        <Button
+            android:layout_width="231dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/borde_boton"
+            android:text="Restablecer contraseña" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/borde_boton"
+            android:text="Volver" />
+
+    </LinearLayout>
+</LinearLayout>
