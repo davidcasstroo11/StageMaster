@@ -12,7 +12,6 @@
         android:layout_marginBottom="45dp">
 
         <TextView
-            android:id="@+id/textRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -46,7 +45,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/inputNombreUsuario"
+                android:id="@+id/inputEmailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
@@ -56,7 +55,7 @@
                 android:paddingLeft="10dp" />
 
             <EditText
-                android:id="@+id/inputPassword"
+                android:id="@+id/inputClaveLogin"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
@@ -68,6 +67,7 @@
                 android:paddingLeft="10dp" />
 
             <TextView
+                android:id="@+id/textRestablecerContraseñaLog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -75,6 +75,7 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/textRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -83,13 +84,14 @@
                 android:textColor="@color/black" />
 
             <Button
+                android:id="@+id/btnAcceder"
                 android:layout_width="108dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/borde_boton"
-                android:text="Registrar" />
+                android:text="Acceder" />
 
             <Button
                 android:layout_width="105dp"

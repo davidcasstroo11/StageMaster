@@ -86,6 +86,7 @@
             android:paddingLeft="10dp" />
 
         <Button
+            android:id="@+id/btnRestablecer"
             android:layout_width="231dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -95,6 +96,7 @@
             android:text="Restablecer contraseña" />
 
         <Button
+            android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

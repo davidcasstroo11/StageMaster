@@ -99,6 +99,7 @@
                 android:text="Restablecer contraseña" />
 
             <Button
+                android:id="@+id/btnVolverLog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
