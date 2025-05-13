@@ -44,7 +44,7 @@ public class StageMasterDB extends SQLiteOpenHelper {
         valores.put("apellidos", nuevoUsuario.getApellidos());
         valores.put("nombreUsuario", nuevoUsuario.getNombreUsuario());
         valores.put("email", nuevoUsuario.getEmail());
-        valores.put("clave", nuevoUsuario.getClave());
+        valores.put("clave", Hash.md5(nuevoUsuario.getClave()));
         resultado = (int) db.insert(TABLA_USUARIOS, null, valores);
         return resultado;
     }

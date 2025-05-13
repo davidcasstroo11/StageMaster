@@ -45,12 +45,11 @@ class Login: AppCompatActivity() {
             } else if (!usuarioExtraido.email.equals(inputEmail.text.toString())) {
                 Toast.makeText(this, "No se encuentra ese email en el programa", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            } else if (!usuarioExtraido.clave.equals(inputClave.text.toString())) {
+            } else if (!usuarioExtraido.clave.equals(Hash.md5(inputClave.text.toString()))) {
                 Toast.makeText(this, "Contraseña incorrecta. Vuelve a intentarlo", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@Login, MainActivity::class.java)
-                Toast.makeText(this, "Bienvenido a StageMaster", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }
         }
