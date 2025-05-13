@@ -1,22 +1,26 @@
 package com.example.stagemaster.vistas
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
 import com.example.stagemaster.controlador.UsuarioController
 
 class Registro: AppCompatActivity() {
+    private lateinit var textLogin: TextView
     private lateinit var inputNombre: EditText
     private lateinit var inputApellidos: EditText
     private lateinit var inputNombreUsuario: EditText
     private lateinit var inputEmail: EditText
     private lateinit var inputClave: EditText
     private lateinit var btnRegistro: Button
+    private lateinit var btnCancelar: Button
 
     private var controladorUsuario: UsuarioController? = null
 
@@ -27,19 +31,21 @@ class Registro: AppCompatActivity() {
 
         controladorUsuario = UsuarioController(this)
 
+        textLogin = findViewById(R.id.textLogin)
         inputNombre = findViewById(R.id.inputNombre)
         inputApellidos = findViewById(R.id.inputApellidos)
         inputNombreUsuario = findViewById(R.id.inputNombreUsuario)
         inputEmail = findViewById(R.id.inputEmail)
         inputClave = findViewById(R.id.inputClaveRegistro)
         btnRegistro = findViewById(R.id.btnRegistrar)
+        btnCancelar = findViewById(R.id.btnCancelar)
 
         btnRegistro.setOnClickListener {
             if (inputNombre.text == null || inputApellidos.text == null || inputNombreUsuario.text == null || inputNombreUsuario.text == null
                 || inputEmail.text == null || inputClave.text == null) {
                 Toast.makeText(this, "Verifica si todos los campos no se encuentran vacíos.", Toast.LENGTH_SHORT).show()
             } else {
-                if (!inputEmail.text.contains("@gmail.com") || !inputEmail.text.contains("hotmail.com")){
+                if (!inputEmail.text.contains("@gmail.com")){
                     Toast.makeText(this, "Verifique que el email sea el correcto", Toast.LENGTH_SHORT).show()
                 } else {
                     val intent = Intent(this@Registro, MainActivity::class.java)
@@ -52,6 +58,14 @@ class Registro: AppCompatActivity() {
                 }
             }
         }
-
+        textLogin.setOnClickListener {
+            val intent = Intent(this@Registro, Login::class.java)
+            startActivity(intent)
+        }
+        btnCancelar.setOnClickListener {
+            val intent = Intent(this@Registro, Login::class.java)
+            setResult(Activity.RESULT_CANCELED, intent)
+            finish()
+        }
     }
 }

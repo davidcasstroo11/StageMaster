@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
 import com.example.stagemaster.controlador.UsuarioController
@@ -26,8 +28,7 @@ class Login: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ventana_login)
 
-//        conexion = StageMasterDB(this)
-//        db = conexion!!.writableDatabase
+        controladorUsuario = UsuarioController(this)
 
         btnAcceder = findViewById(R.id.btnAcceder)
         inputEmail = findViewById(R.id.inputEmailLogin)
@@ -36,11 +37,22 @@ class Login: AppCompatActivity() {
         textRestablecerContra = findViewById(R.id.textRestablecerContraseñaLog)
 
         btnAcceder.setOnClickListener {
-            if (inputEmail.text == null || inputClave.text == null) {
+            val usuarioExtraido = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
+
+            if (inputEmail.text.isEmpty() || inputClave.text.isEmpty()) {
+                Toast.makeText(this, "Verifique que los campos no se encuentren vacios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
+            } else if (!usuarioExtraido.email.equals(inputEmail.text.toString())) {
+                Toast.makeText(this, "No se encuentra ese email en el programa", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else if (!usuarioExtraido.clave.equals(inputClave.text.toString())) {
+                Toast.makeText(this, "Contraseña incorrecta. Vuelve a intentarlo", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else {
+                val intent = Intent(this@Login, MainActivity::class.java)
+                Toast.makeText(this, "Bienvenido a StageMaster", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
             }
-            val intent = Intent(this@Login, MainActivity::class.java)
-            startActivity(intent)
         }
         textRegistro.setOnClickListener {
             val intent = Intent(this@Login, Registro::class.java)

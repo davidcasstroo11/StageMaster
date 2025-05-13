@@ -16,7 +16,11 @@ public class UsuarioController {
     }
 
     public int insertarUsuario(String nombre, String apellidos, String nombreUsuario, String clave, String email) {
-        Usuario nuevoUsuario = new Usuario(nombre, apellidos, nombreUsuario, clave, email);
+        Usuario nuevoUsuario = new Usuario(nombre, apellidos, nombreUsuario, email, clave);
         return conexion.insertarUsuario(db, nuevoUsuario);
+    }
+
+    public Usuario selectUsuarios(String email) {
+        return conexion.selectUsuarios(db, email);
     }
 }
