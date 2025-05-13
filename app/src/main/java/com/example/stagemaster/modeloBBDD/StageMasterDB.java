@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.stagemaster.vistas.Hash;
+
 public class StageMasterDB extends SQLiteOpenHelper {
     public static final String DB_NAME = "stageMasterDB";
     public static final Integer DB_VERSION = 1;

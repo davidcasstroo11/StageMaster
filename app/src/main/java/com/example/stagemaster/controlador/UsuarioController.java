@@ -15,7 +15,7 @@ public class UsuarioController {
         db = conexion.getWritableDatabase();
     }
 
-    public int insertarUsuario(String nombre, String apellidos, String nombreUsuario, String clave, String email) {
+    public int insertarUsuario(String nombre, String apellidos, String nombreUsuario, String email, String clave) {
         Usuario nuevoUsuario = new Usuario(nombre, apellidos, nombreUsuario, email, clave);
         return conexion.insertarUsuario(db, nuevoUsuario);
     }
