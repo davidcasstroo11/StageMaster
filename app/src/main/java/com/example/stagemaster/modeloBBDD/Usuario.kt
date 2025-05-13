@@ -4,6 +4,6 @@ data class Usuario(
     val nombre: String,
     val apellidos: String,
     val nombreUsuario: String,
-    val clave: String,
-    val email: String
+    val email: String,
+    val clave: String
 ):java.io.Serializable
