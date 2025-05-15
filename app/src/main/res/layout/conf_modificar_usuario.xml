@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:layout_width="360dp"
-        android:layout_height="460dp"
+        android:layout_height="519dp"
         android:layout_marginLeft="25dp"
         android:orientation="vertical">
 
@@ -37,63 +37,86 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_horizontal"
-            android:text="Restablecer\ncontraseña"
+            android:text="Modificar usuario"
             android:textColor="@color/pink"
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/textMisDatos"
+            android:id="@+id/textUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="25dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Contraseña"
+            android:text="Usuario"
             android:textColor="@color/pink_light"
             android:textSize="23dp" />
 
         <EditText
-            android:id="@+id/inputClave"
+            android:id="@+id/inputUsuario"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:layout_gravity="end"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:enabled="false"
             android:background="@drawable/borde_input"
             android:paddingLeft="10dp" />
 
         <TextView
-            android:id="@+id/t"
+            android:id="@+id/textNuevoUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Repite contraseña"
+            android:text="Nuevo usuario"
             android:textColor="@color/pink_light"
             android:textSize="23dp" />
 
         <EditText
-            android:id="@+id/inputClaveRepeat"
+            android:id="@+id/inputNuevoUsuario"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:layout_gravity="end"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/borde_input"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/textNuevoUsuarioRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Repetir usuario"
+            android:textColor="@color/pink_light"
+            android:textSize="23dp" />
+
+        <EditText
+            android:id="@+id/inputNuevoUsuarioRepeat"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/borde_input"
             android:paddingLeft="10dp" />
 
         <Button
-            android:id="@+id/btnRestablecer"
-            android:layout_width="231dp"
+            android:id="@+id/btnModificar"
+            android:layout_width="146dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/borde_boton"
-            android:text="Restablecer contraseña" />
+            android:text="Modificar" />
 
         <Button
             android:id="@+id/btnVolver"

@@ -10,8 +10,9 @@ import android.widget.TextView
 import com.example.stagemaster.R
 
 class ConfiguracionFragment : Fragment() {
-    private lateinit var verDetalles: TextView
-    private lateinit var restablecerContrasenia: TextView
+    private lateinit var textVerDetalles: TextView
+    private lateinit var textRestablecerContrasenia: TextView
+    private lateinit var textModificarUsuario: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,15 +25,31 @@ class ConfiguracionFragment : Fragment() {
         val rootView: View = inflater.inflate(R.layout.fragment_configuracion2, container, false)
         rootView.tag = "Configuracion Fragment"
 
-        verDetalles = rootView.findViewById(R.id.textMisDatos)
-        restablecerContrasenia = rootView.findViewById(R.id.textRestablecerContraseña)
+        val nombreLogin = arguments?.getString("nombre")
+        val apellidosLogin = arguments?.getString("apellidos")
+        val usuarioLogueado = arguments?.getString("usuarioLogueado")
+        val emailLogin = arguments?.getString("email")
 
-        verDetalles.setOnClickListener {
+        textVerDetalles = rootView.findViewById(R.id.textMisDatos)
+        textRestablecerContrasenia = rootView.findViewById(R.id.textRestablecerContraseña)
+        textModificarUsuario = rootView.findViewById(R.id.textModificarUsuario)
+
+        textVerDetalles.setOnClickListener {
             val intent = Intent(this.context, VerDetallesUsuario::class.java)
+            intent.putExtra("nombre", nombreLogin)
+            intent.putExtra("apellidos", apellidosLogin)
+            intent.putExtra("usuarioLogueado", usuarioLogueado)
+            intent.putExtra("email", emailLogin)
             startActivity(intent)
         }
-        restablecerContrasenia.setOnClickListener {
+        textRestablecerContrasenia.setOnClickListener {
             val intent = Intent(this.context, RestablecerContraUsuario::class.java)
+            intent.putExtra("email", emailLogin)
+            startActivity(intent)
+        }
+        textModificarUsuario.setOnClickListener {
+            val intent = Intent(this.context, ModificarUsuario::class.java)
+            intent.putExtra("usuarioLogueado", usuarioLogueado)
             startActivity(intent)
         }
 
