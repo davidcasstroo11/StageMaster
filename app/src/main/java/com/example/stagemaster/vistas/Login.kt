@@ -2,7 +2,6 @@ package com.example.stagemaster.vistas
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -12,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
 import com.example.stagemaster.controlador.UsuarioController
-import com.example.stagemaster.modeloBBDD.StageMasterDB
 
 class Login: AppCompatActivity() {
     private lateinit var btnAcceder: Button
@@ -42,7 +40,7 @@ class Login: AppCompatActivity() {
             if (inputEmail.text.isEmpty() || inputClave.text.isEmpty()) {
                 Toast.makeText(this, "Verifique que los campos no se encuentren vacios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            } else if (!usuarioExtraido.email.equals(inputEmail.text.toString())) {
+            } else if (usuarioExtraido == null) {
                 Toast.makeText(this, "No se encuentra ese email en el programa", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else if (!usuarioExtraido.clave.equals(Hash.md5(inputClave.text.toString()))) {
@@ -50,6 +48,10 @@ class Login: AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@Login, MainActivity::class.java)
+                intent.putExtra("nombre", usuarioExtraido.nombre)
+                intent.putExtra("apellidos", usuarioExtraido.apellidos)
+                intent.putExtra("usuarioLogueado", usuarioExtraido.nombreUsuario)
+                intent.putExtra("email", usuarioExtraido.email)
                 startActivity(intent)
             }
         }
@@ -59,7 +61,7 @@ class Login: AppCompatActivity() {
         }
         textRestablecerContra.setOnClickListener {
             val intent = Intent(this@Login, RestablecerContraLogin::class.java)
-            startActivity((intent))
+            startActivity(intent)
         }
     }
 }
