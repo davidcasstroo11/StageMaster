@@ -20,6 +20,7 @@ public class StageMasterDB extends SQLiteOpenHelper {
             "email text not null, clave text not null)";
 
     public static final String SENTENCIA_SELECCION_USUARIOS = "select * from usuario where email = ?";
+    public static final String SENTENCIA_SELECCION_USUARIOS_NOMBRES = "select * from usuario where nombreUsuario = ?";
 
     public StageMasterDB(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -62,5 +63,36 @@ public class StageMasterDB extends SQLiteOpenHelper {
         }
         cursor.close();
         return null;
+    }
+
+    public Usuario selectUsuariosNombreUsuario(SQLiteDatabase db, String nombreUsuario) {
+        Cursor cursor = db.rawQuery(SENTENCIA_SELECCION_USUARIOS_NOMBRES, new String[]{nombreUsuario});
+
+        if (cursor.moveToFirst()) {
+            @SuppressLint("Range") String nombreSelect = cursor.getString(cursor.getColumnIndex("nombre"));
+            @SuppressLint("Range") String apellidosSelect = cursor.getString(cursor.getColumnIndex("apellidos"));
+            @SuppressLint("Range") String nombreUsuarioSelect = cursor.getString(cursor.getColumnIndex("nombreUsuario"));
+            @SuppressLint("Range") String emailSelect = cursor.getString(cursor.getColumnIndex("email"));
+            @SuppressLint("Range") String claveSelect = cursor.getString(cursor.getColumnIndex("clave"));
+            return new Usuario(nombreSelect, apellidosSelect, nombreUsuarioSelect, emailSelect, claveSelect);
+        }
+        cursor.close();
+        return null;
+    }
+
+    public int actualizarUsuarioClave(SQLiteDatabase db, String email, String nuevaClave) {
+        int resultado;
+        ContentValues valores = new ContentValues();
+        valores.put("clave", Hash.md5(nuevaClave));
+        resultado = db.update(TABLA_USUARIOS, valores, "email = ?", new String[]{email});
+        return resultado;
+    }
+
+    public int actualizarNombreUsuario(SQLiteDatabase db, String usuario, String nuevoNonbreUsuario) {
+        int resultado;
+        ContentValues valores = new ContentValues();
+        valores.put("nombreUsuario", nuevoNonbreUsuario);
+        resultado = db.update(TABLA_USUARIOS, valores, "nombreUsuario = ?", new String[]{usuario});
+        return resultado;
     }
 }

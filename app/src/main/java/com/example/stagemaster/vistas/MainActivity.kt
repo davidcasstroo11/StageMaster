@@ -12,6 +12,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var misEventosFragment: MisEventosFragment
     private lateinit var configuracionFragment: ConfiguracionFragment
 
+    private lateinit var nombreLogin: String
+    private lateinit var apellidosLogin: String
+    private lateinit var nombreUsuarioLogin: String
+    private lateinit var emailLogin: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,6 +26,18 @@ class MainActivity : AppCompatActivity() {
         buscarFragment = BuscarFragment()
         misEventosFragment = MisEventosFragment()
         configuracionFragment = ConfiguracionFragment()
+
+        nombreLogin = intent.getStringExtra("nombre").toString()
+        apellidosLogin = intent.getStringExtra("apellidos").toString()
+        nombreUsuarioLogin = intent.getStringExtra("usuarioLogueado").toString()
+        emailLogin = intent.getStringExtra("email").toString()
+
+        val bundle = Bundle()
+        bundle.putString("nombre",nombreLogin)
+        bundle.putString("apellidos",apellidosLogin)
+        bundle.putString("usuarioLogueado",nombreUsuarioLogin)
+        bundle.putString("email",emailLogin)
+        configuracionFragment.arguments = bundle
 
         supportFragmentManager.beginTransaction().replace(R.id.container,principalFragment).commit()
 

@@ -23,4 +23,17 @@ public class UsuarioController {
     public Usuario selectUsuarios(String email) {
         return conexion.selectUsuarios(db, email);
     }
+
+    public Usuario selectUsuariosNombreUsuarios(String nombreUsuario) {
+        return conexion.selectUsuariosNombreUsuario(db, nombreUsuario);
+    }
+
+    public int actualizarUsuarioClave(String email, String clave) {
+        return conexion.actualizarUsuarioClave(db, email, clave);
+    }
+
+    public int actualizarNombreUsuario(String usuario, String nuevoUsuario) {
+        return conexion.actualizarNombreUsuario(db, usuario, nuevoUsuario);
+    }
+
 }
