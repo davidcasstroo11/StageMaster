@@ -41,12 +41,19 @@ class Registro: AppCompatActivity() {
         btnCancelar = findViewById(R.id.btnCancelar)
 
         btnRegistro.setOnClickListener {
+            val usuarioExtraidoEmail = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
+            val usuarioExtraidoNombreUsuario = controladorUsuario!!.selectUsuariosNombreUsuarios(inputNombreUsuario.text.toString())
+
             if (inputNombre.text == null || inputApellidos.text == null || inputNombreUsuario.text == null || inputNombreUsuario.text == null
                 || inputEmail.text == null || inputClave.text == null) {
                 Toast.makeText(this, "Verifica si todos los campos no se encuentran vacíos.", Toast.LENGTH_SHORT).show()
             } else {
                 if (!inputEmail.text.contains("@gmail.com")){
                     Toast.makeText(this, "Verifique que el email sea el correcto", Toast.LENGTH_SHORT).show()
+                } else if (usuarioExtraidoNombreUsuario != null) {
+                    Toast.makeText(this, "Ya existe ese nombre de usuario, elija otro.", Toast.LENGTH_SHORT).show()
+                } else if (usuarioExtraidoEmail != null) {
+                    Toast.makeText(this, "Ya existe ese email, inicie sesión.", Toast.LENGTH_SHORT).show()
                 } else {
                     val intent = Intent(this@Registro, MainActivity::class.java)
                     val resultado = controladorUsuario!!.insertarUsuario(inputNombre.text.toString(), inputApellidos.text.toString(), inputNombreUsuario.text.toString(),
