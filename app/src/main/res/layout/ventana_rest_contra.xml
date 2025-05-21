@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contenidoRestContraLogin"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -61,6 +62,7 @@
                 android:layout_height="43dp"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif"
                 android:paddingLeft="10dp"
                 android:background="@drawable/borde_input"
                 android:hint="Email" />
@@ -73,6 +75,8 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
                 android:paddingLeft="10dp"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"
                 android:background="@drawable/borde_input"
                 android:hint="Nueva contraseña" />
 
@@ -85,6 +89,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
                 android:paddingLeft="10dp"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"
                 android:background="@drawable/borde_input"
                 android:hint="Repite la contraseña" />
 

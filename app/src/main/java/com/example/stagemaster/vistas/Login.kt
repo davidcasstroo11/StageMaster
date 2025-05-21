@@ -52,13 +52,13 @@ class Login: AppCompatActivity() {
             val usuarioExtraido = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
 
             if (inputEmail.text.isEmpty() || inputClave.text.isEmpty()) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteInfo(this, vistaContenidoLogin,"Verifique que los campos no se encuentren vacíos.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"Verifique que los campos no se encuentren vacíos.")
                 return@setOnClickListener
             } else if (usuarioExtraido == null) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteInfo(this, vistaContenidoLogin,"No se ha podido encontrar el email proporcionado, registre un nuevo usuario.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"No se ha podido encontrar el email proporcionado. Registre un nuevo usuario.")
                 return@setOnClickListener
             } else if (!usuarioExtraido.clave.equals(Hash.md5(inputClave.text.toString()))) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteInfo(this, vistaContenidoLogin,"Contraseña incorrecta, vuelva a intentarlo.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"Contraseña incorrecta, vuelva a intentarlo.")
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@Login, MainActivity::class.java)

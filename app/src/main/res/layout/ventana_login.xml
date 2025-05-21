@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="45dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Iniciar sesión"
+            android:text="Login"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30dp" />
@@ -63,6 +63,8 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"
                 android:background="@drawable/borde_input"
                 android:hint="Contraseña"
                 android:paddingLeft="10dp" />
