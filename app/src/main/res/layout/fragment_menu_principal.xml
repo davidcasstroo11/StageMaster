@@ -27,21 +27,40 @@
     <LinearLayout
         android:layout_width="366dp"
         android:layout_height="547dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Conciertos destacados"
+            android:text="Eventos destacados"
             android:textColor="@color/pink_light"
             android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewDestacados"
             android:layout_width="wrap_content"
-            android:layout_height="342dp"
+            android:layout_height="177dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            tools:listitem="@layout/evento_item_layout" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Otros eventos"
+            android:textColor="@color/pink_light"
+            android:textSize="20dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewOtros"
+            android:layout_width="wrap_content"
+            android:layout_height="177dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center"
             tools:listitem="@layout/evento_item_layout" />
 

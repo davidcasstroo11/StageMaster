@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <FrameLayout
@@ -25,27 +26,38 @@
 
     <LinearLayout
         android:layout_width="376dp"
-        android:layout_height="371dp"
+        android:layout_height="498dp"
         android:layout_marginLeft="25dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp">
 
             <EditText
+                android:id="@+id/inputBuscar"
                 android:layout_width="288dp"
                 android:layout_height="54dp"
                 android:background="@drawable/borde_input" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageViewBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/search_f27294" />
 
         </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="184dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            tools:listitem="@layout/evento_item_layout" />
 
     </LinearLayout>
 
