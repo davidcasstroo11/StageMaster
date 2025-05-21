@@ -60,6 +60,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:textColor="@color/black"
             android:enabled="false"
             android:background="@drawable/borde_input"
             android:paddingLeft="10dp" />

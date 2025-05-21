@@ -34,7 +34,7 @@
     <FrameLayout
         android:layout_width="360dp"
         android:layout_height="449dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="15dp"
         android:background="@drawable/borde_form">
 
         <LinearLayout
