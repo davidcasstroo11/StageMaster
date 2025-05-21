@@ -23,7 +23,7 @@ class EntidadesVentanaEmergentes : AppCompatActivity() {
     fun ventanaEmergenteError(context: Context, vistaContenido: View, mensajeError: String) {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.ventana_emergente_error, null)
-        val popupWindow = PopupWindow(view, 1000, 800, true)
+        val popupWindow = PopupWindow(view, 1000, 900, true)
 
         popupWindow.showAtLocation(vistaContenido, Gravity.CENTER, 0, 0)
         btnVentanaEmergente = view.findViewById(R.id.btnAceptar)
@@ -45,7 +45,7 @@ class EntidadesVentanaEmergentes : AppCompatActivity() {
     fun ventanaEmergenteInfo(context: Context, vistaContenido: View, mensajeError: String) {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.ventana_emergente_info, null)
-        val popupWindow = PopupWindow(view, 1000, 800, true)
+        val popupWindow = PopupWindow(view, 1000, 900, true)
 
         popupWindow.showAtLocation(vistaContenido, Gravity.CENTER, 0, 0)
         btnVentanaEmergente = view.findViewById(R.id.btnAceptar)
@@ -57,6 +57,11 @@ class EntidadesVentanaEmergentes : AppCompatActivity() {
         )
 
         btnVentanaEmergente.setOnClickListener {
+            vistaContenido.setRenderEffect(null)
+            popupWindow.dismiss()
+        }
+
+        popupWindow.setOnDismissListener {
             vistaContenido.setRenderEffect(null)
             popupWindow.dismiss()
         }
