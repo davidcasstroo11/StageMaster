@@ -18,7 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Info"
+            android:text="Aviso"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30dp" />
@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:layout_width="360dp"
-        android:layout_height="161dp"
+        android:layout_height="212dp"
         android:layout_marginLeft="7dp"
         android:orientation="vertical">
 
@@ -42,15 +42,35 @@
             android:textAlignment="center"
             android:textColor="@color/pink_light"
             android:textSize="20dp" />
-        <Button
-            android:id="@+id/btnAceptar"
-            android:layout_width="146dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/borde_boton"
-            android:text="Aceptar" />
 
+        <LinearLayout
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAceptar"
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borde_boton"
+                android:text="Aceptar" />
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borde_boton"
+                android:text="Cancelar" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

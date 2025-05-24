@@ -12,7 +12,6 @@
         android:background="@drawable/borde_cabecera">
 
         <TextView
-            android:id="@+id/textRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -60,6 +59,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:textColor="@color/black"
             android:enabled="false"
             android:background="@drawable/borde_input"
             android:paddingLeft="10dp" />
@@ -83,6 +83,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:textColor="@color/black"
             android:enabled="false"
             android:background="@drawable/borde_input"
             android:paddingLeft="10dp" />
@@ -106,6 +107,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:textColor="@color/black"
             android:enabled="false"
             android:background="@drawable/borde_input"
             android:paddingLeft="10dp" />
