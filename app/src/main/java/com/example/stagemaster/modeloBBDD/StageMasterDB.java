@@ -16,10 +16,12 @@ import java.util.Date;
 
 public class StageMasterDB extends SQLiteOpenHelper {
     public static final String DB_NAME = "stageMasterDB";
-    public static final Integer DB_VERSION = 4;
+    public static final Integer DB_VERSION = 5;
     public static final String TABLA_USUARIOS = "usuario";
     public static final String TABLA_ARTISTA = "artista";
     public static final String TABLA_EVENTOS = "evento";
+    public static final String TABLA_MISEVENTOS = "misEventos";
+
     public static final String SENTENCIA_CREACION_TABLA_USUARIOS = "create table usuario " +
             "(idUsuario integer not null primary key autoincrement, nombre text not null, apellidos text not null, nombreUsuario text not null," +
             "email text not null, clave text not null)";
@@ -29,6 +31,9 @@ public class StageMasterDB extends SQLiteOpenHelper {
     public static final String SENTENCIA_CREACION_TABLA_EVENTOS = "create table evento " +
             "(idEvento integer not null primary key autoincrement, nombreArtista text not null, precio double not null, sede text not null," +
             "pais text not null, entradas integer not null, fecha text not null, foto integer not null, idArtista integer not null, foreign key (idArtista) references artista(idArtista))";
+    public static final String SENTENCIA_CREACION_TABLA_MISEVENTOS = "create table misEventos " +
+            "(idMisEventos integer not null primary key autoincrement, idEvento integer not null, idUsuario integer not null," +
+            "foreign key (idEvento) references evento(idEvento), foreign key (idUsuario) references usuario(idUsuario))";
 
     public static final String SENTENCIA_SELECCION_USUARIOS = "select * from usuario where email = ?";
     public static final String SENTENCIA_SELECCION_USUARIOS_NOMBRES = "select * from usuario where nombreUsuario = ?";
@@ -44,10 +49,12 @@ public class StageMasterDB extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS usuario");
         db.execSQL("DROP TABLE IF EXISTS artista");
         db.execSQL("DROP TABLE IF EXISTS evento");
+        db.execSQL("DROP TABLE IF EXISTS misEventos");
 
         db.execSQL(SENTENCIA_CREACION_TABLA_USUARIOS);
         db.execSQL(SENTENCIA_CREACION_TABLA_ARTISTA);
         db.execSQL(SENTENCIA_CREACION_TABLA_EVENTOS);
+        db.execSQL(SENTENCIA_CREACION_TABLA_MISEVENTOS);
     }
 
     @Override
@@ -55,6 +62,7 @@ public class StageMasterDB extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS usuario");
         db.execSQL("DROP TABLE IF EXISTS artista");
         db.execSQL("DROP TABLE IF EXISTS evento");
+        db.execSQL("DROP TABLE IF EXISTS misEventos");
         onCreate(db);
     }
 
@@ -203,5 +211,14 @@ public class StageMasterDB extends SQLiteOpenHelper {
         }
         cursor.close();
         return eventos;
+    }
+
+    public int insertarEventoUsuario(SQLiteDatabase db, MisEventos eventos) {
+        int resultado;
+        ContentValues valores = new ContentValues();
+        valores.put("idEvento", eventos.getIdEvento());
+        valores.put("idUsuario", eventos.getIdUsuario());
+        resultado = (int) db.insert(TABLA_MISEVENTOS, null, valores);
+        return resultado;
     }
 }
