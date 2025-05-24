@@ -15,9 +15,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
 
-class EntidadesVentanaEmergentes : AppCompatActivity() {
+class EntidadVentanasEmergentes : AppCompatActivity() {
     private lateinit var textMensaje: TextView
-    private lateinit var btnVentanaEmergente: Button
+    private lateinit var btnVentanaEmergenteAceptar: Button
+    private lateinit var btnVentanaEmergenteCancelar: Button
 
     @RequiresApi(Build.VERSION_CODES.S)
     fun ventanaEmergenteError(context: Context, vistaContenido: View, mensajeError: String) {
@@ -26,7 +27,7 @@ class EntidadesVentanaEmergentes : AppCompatActivity() {
         val popupWindow = PopupWindow(view, 1000, 900, true)
 
         popupWindow.showAtLocation(vistaContenido, Gravity.CENTER, 0, 0)
-        btnVentanaEmergente = view.findViewById(R.id.btnAceptar)
+        btnVentanaEmergenteAceptar = view.findViewById(R.id.btnAceptar)
         textMensaje = view.findViewById(R.id.textInfoError)
         textMensaje.text = mensajeError
 
@@ -34,7 +35,7 @@ class EntidadesVentanaEmergentes : AppCompatActivity() {
             RenderEffect.createBlurEffect(15f, 15f, Shader.TileMode.CLAMP)
         )
 
-        btnVentanaEmergente.setOnClickListener {
+        btnVentanaEmergenteAceptar.setOnClickListener {
             vistaContenido.setRenderEffect(null)
             popupWindow.dismiss()
         }
@@ -42,13 +43,14 @@ class EntidadesVentanaEmergentes : AppCompatActivity() {
 
     @SuppressLint("MissingInflatedId")
     @RequiresApi(Build.VERSION_CODES.S)
-    fun ventanaEmergenteInfo(context: Context, vistaContenido: View, mensajeError: String) {
+    fun ventanaEmergenteAviso(context: Context, vistaContenido: View, mensajeError: String, redirigir: (Boolean) -> Unit) {
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.ventana_emergente_info, null)
+        val view = inflater.inflate(R.layout.ventana_emergente_aviso, null)
         val popupWindow = PopupWindow(view, 1000, 900, true)
 
         popupWindow.showAtLocation(vistaContenido, Gravity.CENTER, 0, 0)
-        btnVentanaEmergente = view.findViewById(R.id.btnAceptar)
+        btnVentanaEmergenteAceptar = view.findViewById(R.id.btnAceptar)
+        btnVentanaEmergenteCancelar = view.findViewById(R.id.btnCancelar)
         textMensaje = view.findViewById(R.id.textInfoError)
         textMensaje.text = mensajeError
 
@@ -56,7 +58,14 @@ class EntidadesVentanaEmergentes : AppCompatActivity() {
             RenderEffect.createBlurEffect(15f, 15f, Shader.TileMode.CLAMP)
         )
 
-        btnVentanaEmergente.setOnClickListener {
+        btnVentanaEmergenteAceptar.setOnClickListener {
+            redirigir(true)
+            vistaContenido.setRenderEffect(null)
+            popupWindow.dismiss()
+        }
+
+        btnVentanaEmergenteCancelar.setOnClickListener {
+            redirigir(false)
             vistaContenido.setRenderEffect(null)
             popupWindow.dismiss()
         }
