@@ -34,11 +34,15 @@ class RestablecerContraUsuario: AppCompatActivity() {
         emailLogin = intent.getStringExtra("email").toString()
 
         btnRestablecerContra.setOnClickListener {
+            val usuarioExtraido = controladorUsuario!!.selectUsuarios(emailLogin)
             if (inputClave.text.isEmpty() || inputClaveRepeat.text.isEmpty()) {
                 Toast.makeText(this, "Verifica que todos los campos no se encuentran vacíos.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else if (!inputClave.text.toString().equals(inputClaveRepeat.text.toString())) {
                 Toast.makeText(this, "Verifica que ambas claves sean iguales.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else if (usuarioExtraido.clave.equals(Hash.md5(inputClave.text.toString()))) {
+                Toast.makeText(this, "Proporciona una contraseña que sea diferente a la actual.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@RestablecerContraUsuario, ConfiguracionFragment::class.java)

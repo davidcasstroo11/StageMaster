@@ -2,18 +2,12 @@ package com.example.stagemaster.vistas
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.RenderEffect
-import android.graphics.Shader
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.PopupWindow
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
@@ -29,7 +23,7 @@ class Login: AppCompatActivity() {
     private lateinit var vistaContenidoLogin: View
 
     private var controladorUsuario: UsuarioController? = null
-    private var entidadesVentanaEmergentes: EntidadesVentanaEmergentes? = null
+    private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("MissingInflatedId")
@@ -38,7 +32,7 @@ class Login: AppCompatActivity() {
         setContentView(R.layout.ventana_login)
 
         controladorUsuario = UsuarioController(this)
-        entidadesVentanaEmergentes = EntidadesVentanaEmergentes()
+        entidadesVentanaEmergentes = EntidadVentanasEmergentes()
 
         btnAcceder = findViewById(R.id.btnAcceder)
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
@@ -78,7 +72,7 @@ class Login: AppCompatActivity() {
             startActivity(intent)
         }
         btnCerrarSesion.setOnClickListener {
-            entidadesVentanaEmergentes!!.ventanaEmergenteInfo(this, vistaContenidoLogin,"No es posible cerrar sesión en este momento.")
+            entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"No es posible cerrar sesión en este momento.")
         }
     }
 }

@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         bundle.putString("usuarioLogueado",nombreUsuarioLogin)
         bundle.putString("email",emailLogin)
         configuracionFragment.arguments = bundle
+        principalFragment.arguments = bundle
 
         supportFragmentManager.beginTransaction().replace(R.id.container,principalFragment).commit()
 

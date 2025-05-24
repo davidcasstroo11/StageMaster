@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
@@ -27,7 +26,7 @@ class Registro: AppCompatActivity() {
     private lateinit var vistaContenidoRegistro: View
 
     private var controladorUsuario: UsuarioController? = null
-    private var entidadesVentanaEmergentes: EntidadesVentanaEmergentes? = null
+    private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("MissingInflatedId")
@@ -36,7 +35,7 @@ class Registro: AppCompatActivity() {
         setContentView(R.layout.ventana_registro)
 
         controladorUsuario = UsuarioController(this)
-        entidadesVentanaEmergentes = EntidadesVentanaEmergentes()
+        entidadesVentanaEmergentes = EntidadVentanasEmergentes()
 
         textLogin = findViewById(R.id.textLogin)
         inputNombre = findViewById(R.id.inputNombre)
@@ -69,7 +68,12 @@ class Registro: AppCompatActivity() {
                 val intent = Intent(this@Registro, MainActivity::class.java)
                 val resultado = controladorUsuario!!.insertarUsuario(inputNombre.text.toString(), inputApellidos.text.toString(), inputNombreUsuario.text.toString(),
                     inputEmail.text.toString(), inputClave.text.toString())
+                val usuarioExtraido = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
                 if (resultado > 0) {
+                    intent.putExtra("nombre", usuarioExtraido.nombre)
+                    intent.putExtra("apellidos", usuarioExtraido.apellidos)
+                    intent.putExtra("usuarioLogueado", usuarioExtraido.nombreUsuario)
+                    intent.putExtra("email", usuarioExtraido.email)
                     startActivity(intent)
                 }
             }

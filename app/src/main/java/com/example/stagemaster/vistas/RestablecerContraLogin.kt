@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
@@ -23,7 +22,7 @@ class RestablecerContraLogin: AppCompatActivity() {
     private lateinit var vistaContenidoRestablecerContraLogin: View
 
     private var controladorUsuario: UsuarioController? = null
-    private var entidadesVentanaEmergentes: EntidadesVentanaEmergentes? = null
+    private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("MissingInflatedId")
@@ -32,7 +31,7 @@ class RestablecerContraLogin: AppCompatActivity() {
         setContentView(R.layout.ventana_rest_contra)
 
         controladorUsuario = UsuarioController(this)
-        entidadesVentanaEmergentes = EntidadesVentanaEmergentes()
+        entidadesVentanaEmergentes = EntidadVentanasEmergentes()
 
         inputEmail = findViewById(R.id.inputEmailContra)
         inputClave = findViewById(R.id.inputClaveContra)
