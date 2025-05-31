@@ -37,8 +37,10 @@ class MainActivity : AppCompatActivity() {
         bundle.putString("apellidos",apellidosLogin)
         bundle.putString("usuarioLogueado",nombreUsuarioLogin)
         bundle.putString("email",emailLogin)
-        configuracionFragment.arguments = bundle
         principalFragment.arguments = bundle
+        buscarFragment.arguments = bundle
+        misEventosFragment.arguments = bundle
+        configuracionFragment.arguments = bundle
 
         supportFragmentManager.beginTransaction().replace(R.id.container,principalFragment).commit()
 
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.container,misEventosFragment).commit()
                     true
                 }
-                R.id.seccionConfiguracion -> {
+                R.id.seccionAjustes -> {
                     supportFragmentManager.beginTransaction().replace(R.id.container,configuracionFragment).commit()
                     true
                 }
