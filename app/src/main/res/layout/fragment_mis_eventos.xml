@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/contenidoMisEventos"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <FrameLayout
@@ -23,17 +25,30 @@
     </FrameLayout>
 
     <LinearLayout
-        android:layout_width="382dp"
-        android:layout_height="423dp"
-        android:layout_marginLeft="15dp">
+        android:layout_width="match_parent"
+        android:layout_height="583dp"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Tus eventos disponibles a ti:"
-            android:textSize="22dp"
-            android:textColor="@color/pink"
-            android:fontFamily="sans-serif-medium"/>
+            android:layout_width="370dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/borde_input"
+            android:fontFamily="sans-serif-black"
+            android:text="Tus eventos disponibles:"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="28dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMisEventos"
+            android:layout_width="wrap_content"
+            android:layout_height="508dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            tools:listitem="@layout/evento_item_layout_evento_c" />
 
     </LinearLayout>
 
