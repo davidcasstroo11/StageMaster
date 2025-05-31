@@ -3,11 +3,12 @@ package com.example.stagemaster.vistas
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stagemaster.R
 import com.example.stagemaster.controlador.UsuarioController
@@ -18,42 +19,54 @@ class ModificarUsuario: AppCompatActivity() {
     private lateinit var inputNuevoUsuarioRepeat: EditText
     private lateinit var btnModificar: Button
     private lateinit var btnVolver: Button
+    private lateinit var vistaContenidoModificarUsuario: View
 
     private lateinit var usuarioLogueado: String
+    private lateinit var emailLogin: String
     private var controladorUsuarios: UsuarioController? = null
+    private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
 
+    @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.conf_modificar_usuario)
 
         controladorUsuarios = UsuarioController(this)
+        entidadesVentanaEmergentes = EntidadVentanasEmergentes()
 
         inputUsuario = findViewById(R.id.inputUsuario)
         inputNuevoUsuario = findViewById(R.id.inputNuevoUsuario)
         inputNuevoUsuarioRepeat = findViewById(R.id.inputNuevoUsuarioRepeat)
         btnModificar = findViewById(R.id.btnModificar)
         btnVolver = findViewById(R.id.btnVolver)
+        vistaContenidoModificarUsuario = findViewById(R.id.contenidoModificarUsuario)
 
         usuarioLogueado = intent.getStringExtra("usuarioLogueado").toString()
-        inputUsuario.setText(usuarioLogueado)
+        emailLogin = intent.getStringExtra("email").toString()
+        val usuarioExtraidoUsuario = controladorUsuarios!!.selectUsuariosNombreUsuarios(usuarioLogueado)
+        val usuarioExtraidoEmail = controladorUsuarios!!.selectUsuarios(emailLogin)
+        if (usuarioExtraidoUsuario != null) inputUsuario.setText(usuarioLogueado)
+        else if (usuarioExtraidoEmail != null) inputUsuario.setText(usuarioExtraidoEmail.nombreUsuario)
 
         btnModificar.setOnClickListener {
             if (inputNuevoUsuario.text.isEmpty() || inputNuevoUsuarioRepeat.text.isEmpty()) {
-                Toast.makeText(this, "Verifica que todos los campos no se encuentran vacíos.", Toast.LENGTH_SHORT).show()
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoModificarUsuario,"Verifique que los campos no se encuentren vacíos.")
                 return@setOnClickListener
             } else if (!inputNuevoUsuario.text.toString().equals(inputNuevoUsuarioRepeat.text.toString())) {
-                Toast.makeText(this, "Verifica que ambas claves sean iguales.", Toast.LENGTH_SHORT).show()
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoModificarUsuario,
+                    "Verifica que ambos usuarios sean iguales.")
                 return@setOnClickListener
             } else if (inputNuevoUsuario.text.toString().equals(inputUsuario.text.toString())) {
-                Toast.makeText(this, "Debes introducir un nombre diferente al anterior.", Toast.LENGTH_SHORT).show()
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoModificarUsuario,"Debes introducir un nombre de usuario diferente al que ya tienes.")
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@ModificarUsuario, ConfiguracionFragment::class.java)
                 val resultado = controladorUsuarios!!.actualizarNombreUsuario(inputUsuario.text.toString(), inputNuevoUsuario.text.toString())
-                if (resultado > 0) Toast.makeText(this, "Se ha modificado correctamente el nombre del usuario.", Toast.LENGTH_SHORT).show()
-                setResult(Activity.RESULT_OK, intent)
-                finish()
+                if (resultado > 0) {
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }
             }
         }
 

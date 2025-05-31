@@ -95,7 +95,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Repetir usuario"
+            android:text="Repetir nuevo usuario"
             android:textColor="@color/pink_light"
             android:textSize="23dp" />
 
