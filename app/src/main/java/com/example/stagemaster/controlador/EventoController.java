@@ -2,9 +2,12 @@ package com.example.stagemaster.controlador;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.metrics.Event;
 
 import com.example.stagemaster.modeloBBDD.Evento;
+import com.example.stagemaster.modeloBBDD.MisEventos;
 import com.example.stagemaster.modeloBBDD.StageMasterDB;
+import com.example.stagemaster.modeloBBDD.Usuario;
 
 import java.util.ArrayList;
 
@@ -34,5 +37,12 @@ public class EventoController {
         return conexion.selectEventosNombres(db, nombreArtista);
     }
 
+    public ArrayList<Evento> selectEventosId(int idEvento) {
+        return conexion.selectEventosId(db, idEvento);
+    }
+
+    public ArrayList<Evento> selectEventosOrdenacion(String metodoOrdenacion) {
+        return conexion.selectEventosOrdenacion(db, metodoOrdenacion);
+    }
 }
 
