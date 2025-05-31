@@ -23,6 +23,18 @@ public class Evento {
         this.idArtista = idArtista;
     }
 
+    public Evento(int idEvento, String nombreArtista, Double precio, String sede, String pais, int entradas, String fecha, int foto, int idArtista) {
+        this.idEvento = idEvento;
+        this.nombreArtista = nombreArtista;
+        this.precio = precio;
+        this.sede = sede;
+        this.pais = pais;
+        this.entradas = entradas;
+        this.fecha = fecha;
+        this.foto = foto;
+        this.idArtista = idArtista;
+    }
+
     public int getIdEvento() {
         return idEvento;
     }

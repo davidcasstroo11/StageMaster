@@ -16,6 +16,15 @@ public class Usuario {
         this.clave = clave;
     }
 
+    public Usuario(int idUsuario, String nombre, String apellidos, String nombreUsuario, String email, String clave) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nombreUsuario = nombreUsuario;
+        this.email = email;
+        this.clave = clave;
+    }
+
     public int getIdUsuario() {
         return idUsuario;
     }
