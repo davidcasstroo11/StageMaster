@@ -75,4 +75,26 @@ class EntidadVentanasEmergentes : AppCompatActivity() {
             popupWindow.dismiss()
         }
     }
+
+    @SuppressLint("MissingInflatedId")
+    @RequiresApi(Build.VERSION_CODES.S)
+    fun ventanaEmergenteInfo(context: Context, vistaContenido: View, mensajeInfo: String) {
+        val inflater = LayoutInflater.from(context)
+        val view = inflater.inflate(R.layout.ventana_emergente_info, null)
+        val popupWindow = PopupWindow(view, 1000, 900, true)
+
+        popupWindow.showAtLocation(vistaContenido, Gravity.CENTER, 0, 0)
+        btnVentanaEmergenteAceptar = view.findViewById(R.id.btnAceptar)
+        textMensaje = view.findViewById(R.id.textInformacion)
+        textMensaje.text = mensajeInfo
+
+        vistaContenido.setRenderEffect(
+            RenderEffect.createBlurEffect(15f, 15f, Shader.TileMode.CLAMP)
+        )
+
+        btnVentanaEmergenteAceptar.setOnClickListener {
+            vistaContenido.setRenderEffect(null)
+            popupWindow.dismiss()
+        }
+    }
 }
