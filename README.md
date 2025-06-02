@@ -23,10 +23,12 @@ A continuación se va a poder visualizar algunas de las ventanas que más caract
 - **Login de usuario**.
 
 ![Login de usuario](app/src/main/res/assets/login.png)
-- **Menú principal**
-(app/src/main/res/assets/menuPrincipal.png)
+- **Menú principal**.
+  
+![Menú principal](app/src/main/res/assets/menuPrincipal.png)
 - **Ajustes**
-(app/src/main/res/assets/ajustes.png)
+  
+![Ajustes](app/src/main/res/assets/ajustes.png)
 
 ## Instalación
 
