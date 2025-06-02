@@ -21,7 +21,7 @@ eventos al realizar el pago de alguno o consultar aquellos que se tiene a dispos
 ## Aplicación
 A continuación se va a poder visualizar algunas de las ventanas que más caracterizan a StageMaster.
 - **Login de usuario**
-(app/src/main/res/assets/login.png)
+![Login de usuario](app/src/main/res/assets/login.png)
 - **Menú principal**
 (app/src/main/res/assets/menuPrincipal.png)
 - **Ajustes**
