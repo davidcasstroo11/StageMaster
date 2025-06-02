@@ -12,3 +12,13 @@ eventos al realizar el pago de alguno o consultar aquellos que se tiene a dispos
 - **Buscar eventos**: El usuario tendrá acceso a una sección que permite buscar cualquier evento en concreto.
 - **Modificar usuario**: Se tendrá permitido modificar el nombre del usuario en la sección de configuración.
 - **Restablecer contraseña**: Se tendrá permitido restablecer la contraseña del usuario en la sección de configuración y antes de autenticarse.
+
+## Tecnologías utilizadas
+- **Lenguajes**: Java, Kotlin, XML y SQL.
+- **Base de datos**: SQLite.
+- **Paquetes adicionales**: Bitmap, ButtomNavigator.
+
+## Contacto
+- Desarrollado por David Castro Pérez, estudiante de 2º de Desarrollo de Aplicaciones Multiplataforma.
+- Acerca más información sobre mí, este es el perfil de Linkedin: xxxxxxxx
+- Para cualquier duda o inquietud que pueda surgir en la aplicación, pueden escribir a este correo: xxxxxxx
