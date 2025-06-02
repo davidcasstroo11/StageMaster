@@ -20,9 +20,12 @@ eventos al realizar el pago de alguno o consultar aquellos que se tiene a dispos
 
 ## Aplicación
 A continuación se va a poder visualizar algunas de las ventanas que más caracterizan a StageMaster.
-![Login de usuario]("C:\Users\Usuario\Pictures\login.png")
-![Menú principal]("C:\Users\Usuario\Pictures\menuPrincipal.png")
-![Ajustes]("C:\Users\Usuario\Pictures\ajustes.png")
+- **Login de usuario**
+(app/src/main/res/assets/login.png)
+- **Menú principal**
+(app/src/main/res/assets/menuPrincipal.png)
+- **Ajustes**
+(app/src/main/res/assets/ajustes.png)
 
 ## Instalación
 
