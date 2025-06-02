@@ -19,11 +19,15 @@ eventos al realizar el pago de alguno o consultar aquellos que se tiene a dispos
 - **Paquetes adicionales**: Bitmap, ButtomNavigator.
 
 ## Aplicación
+A continuación se va a poder visualizar algunas de las ventanas que más caracterizan a StageMaster.
+![Login de usuario]("C:\Users\Usuario\Pictures\login.png")
+![Menú principal]("C:\Users\Usuario\Pictures\menuPrincipal.png")
+![Ajustes]("C:\Users\Usuario\Pictures\ajustes.png")
 
 ## Instalación
 
 ## Contacto
 - **Nombre**: David Castro Pérez
 - **Correo electrónico**: davidcastroperez93@gmail.com
-- **Linkedin**: 
-- **GitHub**: https://github.com/davidcasstroo11/
+- **Linkedin**: linkedin.com/in/davidcastropérez-bbb025307
+- **GitHub**: github.com/davidcasstroo11
