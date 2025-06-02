@@ -18,7 +18,12 @@ eventos al realizar el pago de alguno o consultar aquellos que se tiene a dispos
 - **Base de datos**: SQLite.
 - **Paquetes adicionales**: Bitmap, ButtomNavigator.
 
+## Aplicación
+
+## Instalación
+
 ## Contacto
-- Desarrollado por David Castro Pérez, estudiante de 2º de Desarrollo de Aplicaciones Multiplataforma.
-- Acerca más información sobre mí, este es el perfil de Linkedin: xxxxxxxx
-- Para cualquier duda o inquietud que pueda surgir en la aplicación, pueden escribir a este correo: xxxxxxx
+- **Nombre**: David Castro Pérez
+- **Correo electrónico**: davidcastroperez93@gmail.com
+- **Linkedin**: 
+- **GitHub**: https://github.com/davidcasstroo11/
