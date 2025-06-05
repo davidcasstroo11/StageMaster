@@ -17,8 +17,12 @@ public class ArtistaController {
         db = conexion.getWritableDatabase();
     }
 
-    public int insertarArtista(String nombreArtistico, String nacionalidad, Date fechaNacimiento, Integer foto) {
+    public int insertarArtista(String nombreArtistico, String nacionalidad, String fechaNacimiento, Integer foto) {
         Artista artista = new Artista(nombreArtistico, nacionalidad, fechaNacimiento, foto);
         return conexion.insertarArtista(db, artista);
+    }
+
+    public Artista obtenerIdArtistaPorNombre(String nombreArtista) {
+        return conexion.obtenerIdArtistaPorNombre(db, nombreArtista);
     }
 }

@@ -44,5 +44,9 @@ public class EventoController {
     public ArrayList<Evento> selectEventosOrdenacion(String metodoOrdenacion) {
         return conexion.selectEventosOrdenacion(db, metodoOrdenacion);
     }
+
+    public ArrayList<Evento> selectEventos(){
+        return conexion.selectEventos(db);
+    }
 }
 
