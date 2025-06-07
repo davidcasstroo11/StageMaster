@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:text=""
-                android:textColor="@color/pink_light"
+                android:textColor="@color/pink"
                 android:textSize="20dp" />
         </LinearLayout>
 

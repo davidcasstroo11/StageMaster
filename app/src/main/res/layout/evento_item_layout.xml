@@ -14,15 +14,17 @@
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView4"
-            android:layout_width="160dp"
-            android:layout_height="102dp"
+            android:layout_width="169dp"
+            android:layout_height="126dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.124"
+            app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.RoundedImage"
             app:srcCompat="@drawable/istockphoto_1333010525_612x612" />
 
         <TextView

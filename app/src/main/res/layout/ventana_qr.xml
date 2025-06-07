@@ -38,18 +38,20 @@
             android:gravity="center_horizontal"
             android:text=""
             android:layout_marginBottom="15dp"
-            android:textColor="@color/pink"
-            android:textSize="25dp" />
+            android:textColor="@color/purple_light"
+            android:textSize="21dp" />
 
         <TextView
             android:id="@+id/textFecha"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:background="@drawable/borde_input"
+            android:fontFamily="sans-serif-black"
             android:text=""
-            android:textColor="@color/pink"
-            android:textSize="25dp" />
+            android:textColor="@color/purple_light"
+            android:textSize="29dp" />
 
         <ImageView
             android:id="@+id/imageViewQR"

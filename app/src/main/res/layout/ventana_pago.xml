@@ -26,26 +26,38 @@
     </FrameLayout>
 
     <LinearLayout
-        android:layout_width="325dp"
-        android:layout_height="43dp"
+        android:layout_width="401dp"
+        android:layout_height="84dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/borde_boton"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textoInfoPago"
-            android:layout_width="314dp"
-            android:layout_height="match_parent"
+            android:layout_width="387dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="110dp"
+            android:fontFamily="sans-serif-black"
+            android:paddingLeft="10dp"
+            android:text="XXX"
+            android:textAlignment="center"
+            android:textColor="@color/purple_light"
+            android:textSize="21dp" />
+
+        <TextView
+            android:id="@+id/textoPrecio"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="118dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="110dp"
             android:background="@drawable/borde_input"
             android:fontFamily="sans-serif-black"
             android:paddingLeft="10dp"
             android:text="XXX"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:textColor="@color/purple_light"
+            android:textSize="29dp" />
 
     </LinearLayout>
 
@@ -53,7 +65,7 @@
         android:layout_width="360dp"
         android:layout_height="457dp"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/borde_form">
 
         <LinearLayout
@@ -118,14 +130,21 @@
                     android:maxLength="3"
                     android:hint="CVC" />
 
-                <EditText
-                    android:id="@+id/inputFechaCad"
-                    android:layout_width="150dp"
+                <Spinner
+                    android:id="@+id/selectMes"
+                    android:layout_width="60dp"
                     android:layout_height="43dp"
-                    android:layout_gravity="end"
-                    android:paddingLeft="10dp"
-                    android:inputType="none"
-                    android:focusable="false"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/borde_input"
+                    android:hint="Fecha Cad." />
+
+                <Spinner
+                    android:id="@+id/selectAnio"
+                    android:layout_width="60dp"
+                    android:layout_height="43dp"
+                    android:textAlignment="center"
                     android:clickable="true"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/borde_input"
