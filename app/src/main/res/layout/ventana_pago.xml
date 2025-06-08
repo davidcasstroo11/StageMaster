@@ -63,7 +63,7 @@
 
     <FrameLayout
         android:layout_width="360dp"
-        android:layout_height="457dp"
+        android:layout_height="482dp"
         android:layout_marginLeft="18dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/borde_form">
@@ -76,79 +76,137 @@
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Nombre y apellidos"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
             <EditText
                 android:id="@+id/inputNombreApellidos"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"
-                android:paddingLeft="10dp"
                 android:background="@drawable/borde_input"
-                android:hint="Nombre y apellidos" />
+                android:hint="Nombre y apellidos"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Dirección"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/inputDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
-                android:paddingLeft="10dp"
                 android:background="@drawable/borde_input"
-                android:hint="Dirección" />
+                android:hint="Dirección"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Nº Tarjeta"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/inputNumeroCuenta"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borde_input"
                 android:fontFamily="sans-serif"
+                android:hint="Nº Tarjeta"
                 android:inputType="number"
                 android:maxLength="12"
-                android:paddingLeft="10dp"
-                android:background="@drawable/borde_input"
-                android:hint="Nº Cuenta" />
+                android:paddingLeft="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="138dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="CVC"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Fecha caducidad"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/inputCVC"
                     android:layout_width="150dp"
                     android:layout_height="43dp"
-                    android:paddingLeft="10dp"
                     android:layout_gravity="start"
-                    android:inputType="number"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/borde_input"
+                    android:hint="CVC"
+                    android:inputType="number"
                     android:maxLength="3"
-                    android:hint="CVC" />
+                    android:paddingLeft="10dp" />
 
                 <Spinner
                     android:id="@+id/selectMes"
                     android:layout_width="60dp"
                     android:layout_height="43dp"
-                    android:textAlignment="center"
-                    android:clickable="true"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/borde_input"
-                    android:hint="Fecha Cad." />
+                    android:clickable="true"
+                    android:hint="Fecha Cad."
+                    android:textAlignment="center" />
 
                 <Spinner
                     android:id="@+id/selectAnio"
                     android:layout_width="60dp"
                     android:layout_height="43dp"
-                    android:textAlignment="center"
-                    android:clickable="true"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/borde_input"
-                    android:hint="Fecha Cad." />
+                    android:clickable="true"
+                    android:hint="Fecha Cad."
+                    android:textAlignment="center" />
 
             </LinearLayout>
 
@@ -157,7 +215,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/borde_boton"
                 android:text="Pagar" />

@@ -33,7 +33,7 @@
 
     <FrameLayout
         android:layout_width="360dp"
-        android:layout_height="406dp"
+        android:layout_height="435dp"
         android:layout_marginLeft="18dp"
         android:background="@drawable/borde_form">
 
@@ -45,6 +45,16 @@
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
             <EditText
                 android:id="@+id/inputEmailLogin"
                 android:layout_width="match_parent"
@@ -55,18 +65,28 @@
                 android:hint="Email"
                 android:paddingLeft="10dp" />
 
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Contraseña"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
             <EditText
                 android:id="@+id/inputClaveLogin"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
-                android:fontFamily="sans-serif"
-                android:inputType="textPassword"
                 android:background="@drawable/borde_input"
+                android:fontFamily="sans-serif"
                 android:hint="Contraseña"
+                android:inputType="textPassword"
                 android:paddingLeft="10dp" />
 
             <TextView
