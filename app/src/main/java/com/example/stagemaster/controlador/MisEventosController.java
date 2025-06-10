@@ -15,6 +15,10 @@ public class MisEventosController {
     public SQLiteDatabase db;
     public StageMasterDB conexion;
 
+    /**
+     * Constructor del controlador de la tabla misEventos. Además, establece al incializarse la conexión con la BBDD.
+     * @param contexto Contexto actual
+     */
     public MisEventosController(Context contexto) {
         conexion = new StageMasterDB(contexto);
         db = conexion.getWritableDatabase();
@@ -39,5 +43,14 @@ public class MisEventosController {
 
     public int eliminarEventoUsuario(MisEventos eventos) {
         return conexion.eliminarEventoUsuario(db, eventos);
+    }
+
+    /**
+     * Cierra la conexión con la base de datos
+     */
+    public void cerrar() {
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
 }

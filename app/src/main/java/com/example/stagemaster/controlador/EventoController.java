@@ -15,13 +15,17 @@ public class EventoController {
     public SQLiteDatabase db;
     public StageMasterDB conexion;
 
+    /**
+     * Constructor del controlador de la tabla evento. Además, establece al incializarse la conexión con la BBDD.
+     * @param contexto Contexto actual
+     */
     public EventoController(Context contexto) {
         conexion = new StageMasterDB(contexto);
         db = conexion.getWritableDatabase();
     }
 
-    public int insertarEvento (String nombreArtistico, double precio, String sede, String pais, Integer entradas, String fecha, Integer foto, Integer idArtista ) {
-        Evento evento = new Evento(nombreArtistico, precio, sede, pais, entradas, fecha, foto, idArtista);
+    public int insertarEvento (String nombreArtistico, double precio, String sede, String pais, String fecha, Integer foto, Integer idArtista ) {
+        Evento evento = new Evento(nombreArtistico, precio, sede, pais, fecha, foto, idArtista);
         return conexion.insertarEvento(db, evento);
     }
 
@@ -33,8 +37,12 @@ public class EventoController {
         return conexion.selectOtrosEventos(db);
     }
 
-    public ArrayList<Evento> selectEventosNombres(String nombreArtista) {
-        return conexion.selectEventosNombres(db, nombreArtista);
+    public Evento selectEventosNombres(String nombreArtista, String fecha) {
+        return conexion.selectEventosNombres(db, nombreArtista, fecha);
+    }
+
+    public ArrayList<Evento> selectEventosNombresBuscar(String nombreArtista) {
+        return conexion.selectEventosNombresBuscar(db, nombreArtista);
     }
 
     public ArrayList<Evento> selectEventosId(int idEvento) {
@@ -47,6 +55,15 @@ public class EventoController {
 
     public ArrayList<Evento> selectEventos(){
         return conexion.selectEventos(db);
+    }
+
+    /**
+     * Cierra la conexión con la base de datos
+     */
+    public void cerrar() {
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
 }
 

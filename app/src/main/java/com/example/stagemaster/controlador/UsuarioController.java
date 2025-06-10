@@ -10,6 +10,10 @@ public class UsuarioController {
     public SQLiteDatabase db;
     public StageMasterDB conexion;
 
+    /**
+     * Constructor del controlador de la tabla usuario. Además, establece al incializarse la conexión con la BBDD.
+     * @param contexto Contexto actual
+     */
     public UsuarioController(Context contexto) {
         conexion = new StageMasterDB(contexto);
         db = conexion.getWritableDatabase();
@@ -36,4 +40,12 @@ public class UsuarioController {
         return conexion.actualizarNombreUsuario(db, usuario, nuevoUsuario);
     }
 
+    /**
+     * Cierra la conexión con la base de datos
+     */
+    public void cerrar() {
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
+    }
 }
