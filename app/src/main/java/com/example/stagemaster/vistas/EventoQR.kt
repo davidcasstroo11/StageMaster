@@ -56,6 +56,8 @@ class EventoQR: AppCompatActivity() {
             // Se genera y muestra el codigo QR en la ventana actual
             val qr = generarQR(eventoSeleccionado.codReferencia)
             imageViewQR.setImageBitmap(qr)
+
+            // Se cierra la conexión con la BBDD
             controladorUsuario.cerrar()
             controladorEvento.cerrar()
             controladorMisEventos.cerrar()

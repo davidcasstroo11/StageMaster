@@ -58,6 +58,7 @@ class MenuPrincipalFragment: Fragment() {
         mAdapter = ControladorRecylerView(eventosListOtros, emailUsuario.toString())
         recyclerViewOtros.adapter = mAdapter
 
+        // Se cierra la conexión con la BBDD
         controladorArtista.cerrar()
         controladorEvento.cerrar()
         return rootView
