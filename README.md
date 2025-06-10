@@ -30,6 +30,12 @@ A continuación se va a poder visualizar algunas de las ventanas que más caract
   
 ![Ajustes](app/src/main/res/assets/ajustes.png)
 
+## Instalación
+- **1**. Ve a la sección de Releases.
+- **2**. Descarga la versión más reciente del archivo .apk.
+- **3**. Transfiere el archivo a tu dispositivo Android (si estás en PC).
+- **4**. En el dispositivo móvil, habilita la opción de instalación de apps desde fuentes desconocidas.
+- **5**. Abre el archivo .apk e instala la aplicación.
 
 ## Contacto
 - **Nombre**: David Castro Pérez
