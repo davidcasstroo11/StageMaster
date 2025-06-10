@@ -2,6 +2,7 @@ package com.example.stagemaster.vistas
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -12,24 +13,15 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stagemaster.R
-import com.example.stagemaster.controlador.EventoController
-import com.example.stagemaster.controlador.MisEventosController
-import com.example.stagemaster.controlador.UsuarioController
 import com.example.stagemaster.modeloBBDD.Evento
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 class ControladorRecyclerViewEventoC(private val misEventosList: ArrayList<Evento>, private val contenidoRecyler: View, private val emailUsuario: String): RecyclerView.Adapter<VistaEventoCompra>() {
-    private lateinit var controladorMisEventos: MisEventosController
-    private lateinit var controladorEvento: EventoController
-    private lateinit var controladorUsuario: UsuarioController
-    private lateinit var entidadVentanasEmergentes: EntidadVentanasEmergentes
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VistaEventoCompra {
         val item = LayoutInflater.from(parent.context)
             .inflate(R.layout.evento_item_layout_evento_c, parent, false)
-        controladorMisEventos = MisEventosController(parent.context)
-        controladorEvento = EventoController(parent.context)
-        controladorUsuario = UsuarioController(parent.context)
-        entidadVentanasEmergentes = EntidadVentanasEmergentes()
         return VistaEventoCompra(item)
     }
 
@@ -41,10 +33,17 @@ class ControladorRecyclerViewEventoC(private val misEventosList: ArrayList<Event
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onBindViewHolder(holder: VistaEventoCompra, position: Int) {
         val evento = misEventosList[position]
+        val hoy = LocalDate.now()
         holder.nombreArtista?.text = evento.nombreArtista
+
+        // Se obtiene el numero de dias restantes en comparación a la fecha configurada
+        holder.diasRestantes?.text = ChronoUnit.DAYS.between(hoy, LocalDate.parse(evento.fecha)).toString()
+
         holder.fecha?.text = evento.fecha
-        holder.sede?.text = evento.sede + "(" + evento.pais + ")"
+
+        // Se coloca la imagen con un poco de sombreado
         holder.foto?.setImageResource(evento.foto)
+        holder.foto?.setColorFilter(Color.parseColor("#80000000"))
 
         holder.itemView.setOnClickListener {
             val contexto = holder.itemView.context
@@ -54,39 +53,14 @@ class ControladorRecyclerViewEventoC(private val misEventosList: ArrayList<Event
             contexto.startActivity(intent)
         }
     }
-
-    /*@RequiresApi(Build.VERSION_CODES.S)
-    private fun mostrarMenuEvento(view: View, evento: Evento) {
-        val popup = PopupMenu(view.context, view)
-        popup.menuInflater.inflate(R.menu.menu_popup, popup.menu)
-
-        popup.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.eliminar_item -> {
-                    val controladorEvento = EventoController(view.context)
-                    entidadVentanasEmergentes.ventanaEmergenteAviso(view.context,contenidoRecyler,"¿Seguro que quieres eliminar el evento?. Recuerda que el proceso no es reversible." ) { redireccionar ->
-                        if (redireccionar) {
-                            val usuario = controladorUsuario.selectUsuarios(emailUsuario)
-                            val resulado = controladorEvento.eliminarEventoUsuario(usuario,evento)
-                            if (resulado > 0) {
-                                misEventosList.remove(evento)
-                                notifyDataSetChanged()
-                            }
-                        }
-                    }
-                    true
-                }
-                else -> false
-            }
-        }
-
-        popup.show()
-    }*/
 }
 
+/**
+ * Clase que contiene todos los parametros necesarios para configurar datos sobre el recycler view
+ */
 class VistaEventoCompra(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
     val nombreArtista: TextView? = itemView?.findViewById(R.id.textArtista)
     val fecha: TextView? = itemView?.findViewById(R.id.textFecha)
-    val sede: TextView? = itemView?.findViewById(R.id.textCiudad)
+    val diasRestantes: TextView? = itemView?.findViewById(R.id.textDiasRestantes)
     val foto: ImageView? = itemView?.findViewById(R.id.imageView4)
 }

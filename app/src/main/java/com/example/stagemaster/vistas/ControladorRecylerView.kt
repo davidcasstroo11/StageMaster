@@ -40,16 +40,20 @@ class ControladorRecylerView(private val eventosList: ArrayList<Evento>, private
             intent.putExtra("nombreArtista", holder.nombreArtista?.text)
             intent.putExtra("precio", holder.precio.text)
             intent.putExtra("email", emailUsuario)
+            intent.putExtra("sede", holder.sede?.text)
+            intent.putExtra("fecha", holder.fecha?.text)
             contexto.startActivity(intent)
         }
     }
 }
 
+/**
+ * Clase que contiene todos los parametros necesarios para configurar datos sobre el recycler view
+ */
 class VistaEvento(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
     val nombreArtista: TextView? = itemView?.findViewById(R.id.textArtista)
     val precio: TextView? = itemView?.findViewById(R.id.textPrecio)
     val sede: TextView? = itemView?.findViewById(R.id.textCiudad)
-    //val pais: TextView? = itemView?.findViewById(R.id.text)
     val fecha: TextView? = itemView?.findViewById(R.id.textFecha)
     val foto: ImageView? = itemView?.findViewById(R.id.imageView4)
 }
