@@ -2,6 +2,8 @@ package com.example.stagemaster
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.stagemaster.controlador.UsuarioController
+import com.example.stagemaster.modeloBBDD.Usuario
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,9 +18,13 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.stagemaster", appContext.packageName)
+    fun actualizarNombreUsuario() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val controladorUsuario = UsuarioController(context)
+        val usuarioExtraido = controladorUsuario.selectUsuariosNombreUsuarios("david0411")
+        if (usuarioExtraido != null) {
+            assertEquals(1,
+                controladorUsuario.actualizarNombreUsuario("david0411", "david12"))
+        }
     }
 }
