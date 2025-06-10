@@ -49,7 +49,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginTop="25dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Contraseña"
+            android:text="Nueva contraseña"
             android:textColor="@color/pink_light"
             android:textSize="23dp" />
 
@@ -74,7 +74,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Repite contraseña"
+            android:text="Repite nueva contraseña"
             android:textColor="@color/pink_light"
             android:textSize="23dp" />
 
@@ -85,7 +85,7 @@
             android:layout_gravity="end"
             android:fontFamily="sans-serif"
             android:inputType="textPassword"
-            android:hint="Repite contraseña"
+            android:hint="Repite nueva contraseña"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"

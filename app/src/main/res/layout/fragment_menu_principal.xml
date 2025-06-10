@@ -61,7 +61,7 @@
                 android:background="@drawable/borde_input"
                 android:fontFamily="sans-serif-black"
                 android:textAlignment="center"
-                android:text="Otros eventos"
+                android:text="Más recientes"
                 android:textColor="@color/purple_light"
                 android:textSize="28dp" />
 

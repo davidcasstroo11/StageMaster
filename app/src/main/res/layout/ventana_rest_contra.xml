@@ -33,13 +33,13 @@
 
     <FrameLayout
         android:layout_width="360dp"
-        android:layout_height="449dp"
+        android:layout_height="461dp"
         android:layout_marginLeft="15dp"
         android:background="@drawable/borde_form">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="427dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
@@ -51,10 +51,20 @@
                 android:layout_height="50dp"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Ingresa tu nueva contraseña en los campos a continuación. Asegurate de que sea segura y fácil de recordar"
+                android:text="Ingresa tu nueva contraseña en los campos a continuación. Asegurate de que sea segura y fácil de recordar."
                 android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/inputEmailContra"
@@ -62,37 +72,57 @@
                 android:layout_height="43dp"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="10dp"
                 android:background="@drawable/borde_input"
-                android:hint="Email" />
+                android:fontFamily="sans-serif"
+                android:hint="Email"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Nueva contraseña"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/inputClaveContra"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
-                android:paddingLeft="10dp"
-                android:fontFamily="sans-serif"
-                android:inputType="textPassword"
                 android:background="@drawable/borde_input"
-                android:hint="Nueva contraseña" />
+                android:fontFamily="sans-serif"
+                android:hint="Nueva contraseña"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:layout_width="189dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Repite nueva contraseña"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/inputClaveContraRepeat"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
-                android:paddingLeft="10dp"
-                android:fontFamily="sans-serif"
-                android:inputType="textPassword"
                 android:background="@drawable/borde_input"
-                android:hint="Repite la contraseña" />
+                android:fontFamily="sans-serif"
+                android:hint="Repite nueva contraseña"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp" />
 
             <Button
                 android:id="@+id/btnRestablecerContra"
