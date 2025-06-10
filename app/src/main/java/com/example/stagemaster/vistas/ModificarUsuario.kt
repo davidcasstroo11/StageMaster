@@ -64,7 +64,7 @@ class ModificarUsuario: AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@ModificarUsuario, ConfiguracionFragment::class.java)
-                entidadesVentanaEmergentes!!.ventanaEmergenteAviso(this, viewContenidoModificarUsuario, "¿Seguro que quieres modificar el nombre de usuario?") { redirigir ->
+                entidadesVentanaEmergentes!!.ventanaEmergenteAviso(this, viewContenidoModificarUsuario, "¿Seguro que quieres modificar el nombre de usuario? Deberás reiniciar la app para ver los cambios.") { redirigir ->
                     if (redirigir) {
                         // Se actualiza el nombre de usuario a través del controlador de usuarios
                         val resultado = controladorUsuarios!!.actualizarNombreUsuario(inputUsuario.text.toString(), inputNuevoUsuario.text.toString())
