@@ -19,7 +19,7 @@ class ConfiguracionFragment : Fragment() {
     private lateinit var textModificarUsuario: TextView
     private lateinit var textCerrarSesion: TextView
     private lateinit var textSalir: TextView
-    private lateinit var contenidoVistaConfiguracion: View
+    private lateinit var viewVistaConfiguracion: View
 
     private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
 
@@ -36,13 +36,14 @@ class ConfiguracionFragment : Fragment() {
         val rootView: View = inflater.inflate(R.layout.fragment_configuracion2, container, false)
         rootView.tag = "Configuracion Fragment"
 
+        // Se obtienen los datos pasados por argumentos de las secciones
         val nombreLogin = arguments?.getString("nombre")
         val apellidosLogin = arguments?.getString("apellidos")
         val usuarioLogueado = arguments?.getString("usuarioLogueado")
         val emailLogin = arguments?.getString("email")
 
         entidadesVentanaEmergentes = EntidadVentanasEmergentes()
-        contenidoVistaConfiguracion = rootView.findViewById(R.id.contenidoConfiguracion)
+        viewVistaConfiguracion = rootView.findViewById(R.id.contenidoConfiguracion)
         textVerDetalles = rootView.findViewById(R.id.textMisDatos)
         textRestablecerContrasenia = rootView.findViewById(R.id.textRestablecerContraseña)
         textModificarUsuario = rootView.findViewById(R.id.textModificarUsuario)
@@ -69,7 +70,7 @@ class ConfiguracionFragment : Fragment() {
             startActivity(intent)
         }
         textCerrarSesion.setOnClickListener {
-            entidadesVentanaEmergentes!!.ventanaEmergenteAviso(requireContext(), contenidoVistaConfiguracion, "¿Seguro que quieres cerrar sesión? Se guardarán todos los datos automáticamente.") { redireccion ->
+            entidadesVentanaEmergentes!!.ventanaEmergenteAviso(requireContext(), viewVistaConfiguracion, "¿Seguro que quieres cerrar sesión? Se guardarán todos los datos automáticamente.") { redireccion ->
                 if (redireccion) {
                     val intent = Intent(this.context, Login::class.java)
                     startActivity(intent)
@@ -77,7 +78,7 @@ class ConfiguracionFragment : Fragment() {
             }
         }
         textSalir.setOnClickListener {
-            entidadesVentanaEmergentes!!.ventanaEmergenteAviso(requireContext(), contenidoVistaConfiguracion, "¿Seguro que quieres salir de StageMaster? No se perderán los datos al salir.") { redireccion ->
+            entidadesVentanaEmergentes!!.ventanaEmergenteAviso(requireContext(), viewVistaConfiguracion, "¿Seguro que quieres salir de StageMaster? No se perderán los datos al salir.") { redireccion ->
                 if (redireccion) {
                     requireActivity().finishAffinity()
                     exitProcess(0)

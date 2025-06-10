@@ -28,6 +28,7 @@ class BuscarFragment: Fragment() {
     private lateinit var btnOrdenacionNombre: Button
     private lateinit var btnOrdenacionPrecio: Button
 
+    private var ordenacionActiva: Boolean = false
     private var eventosListBuscar = ArrayList<Evento>()
     private lateinit var controladorEvento: EventoController
 
@@ -58,66 +59,32 @@ class BuscarFragment: Fragment() {
         mAdapter = ControladorRecylerView(eventosListBuscar, emailUsuario)
         recyclerViewBuscar.adapter = mAdapter
 
-        var ordenacionActiva = false
+        // Se inicializa la ventana con todos los eventos contenidos en la BBDD
+        obtenerEventos(eventosListBuscar)
+        textoResultadoBusqueda.setText(eventosListBuscar.size.toString() + " eventos mostrados")
 
+        // Lógica al accionar el icono de búscar
         imageViewBuscar.setOnClickListener {
-            seleccionarEventosBuscar(eventosListBuscar)
+            if (inputBuscar.text.isEmpty()) {
+                obtenerEventos(eventosListBuscar)
+            } else seleccionarEventosBuscar(eventosListBuscar)
             textoResultadoBusqueda.setText(eventosListBuscar.size.toString() + " eventos mostrados")
         }
 
-        btnOrdenacionFecha.setOnClickListener {
-            if (!ordenacionActiva) {
-                inputBuscar.setText("")
-                ordenar(eventosListBuscar, "fecha")
-                btnOrdenacionFecha.setTextColor(R.color.pink)
-                textoResultadoBusqueda.setText(eventosListBuscar.size.toString() + " eventos mostrados")
-                ordenacionActiva = true
-            } else {
-                btnOrdenacionFecha.setTextColor(R.color.black)
-                eventosListBuscar.clear()
-                mAdapter?.notifyDataSetChanged()
-                textoResultadoBusqueda.setText("")
-                ordenacionActiva = false
-            }
-        }
-
-        btnOrdenacionNombre.setOnClickListener {
-            if (!ordenacionActiva) {
-                inputBuscar.setText("")
-                ordenar(eventosListBuscar, "nombreArtista")
-                btnOrdenacionNombre.setTextColor(R.color.pink)
-                textoResultadoBusqueda.setText(eventosListBuscar.size.toString() + " eventos mostrados")
-                ordenacionActiva = true
-            } else {
-                btnOrdenacionNombre.setTextColor(R.color.black)
-                eventosListBuscar.clear()
-                mAdapter?.notifyDataSetChanged()
-                textoResultadoBusqueda.setText("")
-                ordenacionActiva = false
-            }
-        }
-
-        btnOrdenacionPrecio.setOnClickListener {
-            if (!ordenacionActiva) {
-                inputBuscar.setText("")
-                ordenar(eventosListBuscar, "precio")
-                btnOrdenacionPrecio.setTextColor(R.color.pink)
-                textoResultadoBusqueda.setText(eventosListBuscar.size.toString() + " eventos mostrados")
-                ordenacionActiva = true
-            } else {
-                btnOrdenacionPrecio.setTextColor(R.color.black)
-                eventosListBuscar.clear()
-                mAdapter?.notifyDataSetChanged()
-                textoResultadoBusqueda.setText("")
-                ordenacionActiva = false
-            }
-        }
+        // Configuración de los filtros de ordenación
+        configurarOrdenacion(btnOrdenacionFecha, "fecha", R.color.white, R.color.black)
+        configurarOrdenacion(btnOrdenacionNombre, "nombreArtista", R.color.pink, R.color.black)
+        configurarOrdenacion(btnOrdenacionPrecio, "precio", R.color.pink, R.color.black)
 
         return rootView
     }
 
+    /**
+     * Método que devuelve los eventos que se corresponde con el nombre introducido en la búsqueda
+     * @param eventoList Lista de eventos
+     */
     fun seleccionarEventosBuscar(eventoList: ArrayList<Evento>){
-        val eventosResultantes = controladorEvento.selectEventosNombres(inputBuscar.text.toString())
+        val eventosResultantes = controladorEvento.selectEventosNombresBuscar(inputBuscar.text.toString())
         if (eventosResultantes != null) {
             eventoList.clear()
             eventoList.addAll(eventosResultantes)
@@ -125,12 +92,53 @@ class BuscarFragment: Fragment() {
         }
     }
 
+    /**
+     * Método que devuelve todos los eventos disponibles que se encuentran en la BBDD
+     * @param eventoList Lista de eventos
+     */
+    fun obtenerEventos(eventoList: ArrayList<Evento>) {
+        val eventosResultantes = controladorEvento.selectEventos()
+        if (eventosResultantes != null) {
+            eventoList.clear()
+            eventoList.addAll(eventosResultantes)
+            mAdapter?.notifyDataSetChanged()
+        }
+    }
+
+    /**
+     * Método que ordena según los parametros introducidos, en base a cierto campo del evento
+     * @param eventoList Lista de eventos
+     * @param metodoOrdenacion Campo de ordenación
+     */
     fun ordenar(eventoList: ArrayList<Evento>, metodoOrdenacion: String) {
         eventoList.clear()
         val eventosResultantes = controladorEvento.selectEventosOrdenacion(metodoOrdenacion)
         if (eventosResultantes != null) {
             eventoList.addAll(eventosResultantes)
             mAdapter?.notifyDataSetChanged()
+        }
+    }
+
+    /**
+     * Método que configura la lógica al accionar un botón correspondiente de algún filtro de eventos
+     * @param boton Filtro que se acciona
+     * @param metodoOrdenacion Campo de ordenación
+     * @param colorActivo Color que refleja la activación de un filtro
+     * @param colorInactivo Color que reflela de inactividad de un filtro
+     */
+    fun configurarOrdenacion(boton: Button, metodoOrdenacion: String, colorActivo: Int, colorInactivo: Int) {
+        boton.setOnClickListener {
+            if (!ordenacionActiva) {
+                inputBuscar.setText("")
+                ordenar(eventosListBuscar, metodoOrdenacion)
+                textoResultadoBusqueda.setText(eventosListBuscar.size.toString() + " eventos mostrados")
+                ordenacionActiva = true
+            } else {
+                eventosListBuscar.clear()
+                mAdapter?.notifyDataSetChanged()
+                textoResultadoBusqueda.setText("")
+                ordenacionActiva = false
+            }
         }
     }
 }

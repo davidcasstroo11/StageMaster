@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         nombreUsuarioLogin = intent.getStringExtra("usuarioLogueado").toString()
         emailLogin = intent.getStringExtra("email").toString()
 
+        // Asignación de argumentos en los parametros recibidos por el intent
         val bundle = Bundle()
         bundle.putString("nombre",nombreLogin)
         bundle.putString("apellidos",apellidosLogin)
@@ -42,8 +43,10 @@ class MainActivity : AppCompatActivity() {
         misEventosFragment.arguments = bundle
         configuracionFragment.arguments = bundle
 
+        // Se inicializa la aplicación con la sección del menú principal
         supportFragmentManager.beginTransaction().replace(R.id.container,principalFragment).commit()
 
+        // Selector del menú de navegación inferior
         menuNavegacion.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.seccionPrincipal -> {

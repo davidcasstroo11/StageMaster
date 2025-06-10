@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +23,7 @@ class MisEventosFragment: Fragment() {
     private lateinit var recyclerViewMisEventos: RecyclerView
     private var misEventosList = ArrayList<MisEventos>()
     private var eventosList = ArrayList<Evento>()
-    private lateinit var vistaContenidoMisEventos: View
+    private lateinit var viewContenidoMisEventos: View
 
     private lateinit var controladorUsuario: UsuarioController
     private lateinit var controladorMisEvento: MisEventosController
@@ -50,18 +48,21 @@ class MisEventosFragment: Fragment() {
         controladorEvento = EventoController(requireContext())
         entidadVentanasEmergentes = EntidadVentanasEmergentes()
         emailUsuario = arguments?.getString("email").toString()
-        vistaContenidoMisEventos = rootView.findViewById(R.id.contenidoMisEventos)
+        viewContenidoMisEventos = rootView.findViewById(R.id.contenidoMisEventos)
 
         recyclerViewMisEventos = rootView.findViewById(R.id.recyclerViewMisEventos)
         recyclerViewMisEventos.layoutManager = LinearLayoutManager(requireContext())
         seleccionarMisEventosUsuario()
-        mAdapter = ControladorRecyclerViewEventoC(eventosList, vistaContenidoMisEventos, emailUsuario)
+        mAdapter = ControladorRecyclerViewEventoC(eventosList, viewContenidoMisEventos, emailUsuario)
         recyclerViewMisEventos.adapter = mAdapter
         eliminarItemMisEventos()
 
         return rootView
     }
 
+    /**
+     * Método que selecciona todos los eventos correspondientes con el usuario actual
+     */
     private fun seleccionarMisEventosUsuario() {
         eventosList.clear()
         val usuario = controladorUsuario.selectUsuarios(emailUsuario)
@@ -74,6 +75,10 @@ class MisEventosFragment: Fragment() {
         }
     }
 
+    /**
+     * Método que se encarga de eliminar algun evento que se encuentre
+     * disponible para el usuario en la sección Mis Eventos
+     */
     private fun eliminarItemMisEventos() {
         val simpleCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(
@@ -89,7 +94,7 @@ class MisEventosFragment: Fragment() {
                 val posicion = viewHolder.adapterPosition
                 val evento = misEventosList[posicion]
 
-                entidadVentanasEmergentes.ventanaEmergenteAviso(requireContext(), vistaContenidoMisEventos, "¿Seguro que quieres eliminar el evento? Se reembolsará un 25% del coste total.") { eliminar ->
+                entidadVentanasEmergentes.ventanaEmergenteAviso(requireContext(), viewContenidoMisEventos, "¿Seguro que quieres eliminar el evento? Se reembolsará un 25% del coste total.") { eliminar ->
                     if (eliminar) {
                         controladorMisEvento.eliminarEventoUsuario(evento)
                         eventosList.removeAt(posicion)
@@ -104,10 +109,14 @@ class MisEventosFragment: Fragment() {
         itemTouchHelper.attachToRecyclerView(recyclerViewMisEventos)
     }
 
+    /**
+     * Método que permite refrescar el recycler view para visualizar los eventos actualizados
+     * ante cualquier eliminación de algunos.
+     */
     override fun onResume() {
         super.onResume()
         seleccionarMisEventosUsuario()
-        mAdapter = ControladorRecyclerViewEventoC(eventosList, vistaContenidoMisEventos, emailUsuario)
+        mAdapter = ControladorRecyclerViewEventoC(eventosList, viewContenidoMisEventos, emailUsuario)
         recyclerViewMisEventos.adapter = mAdapter
     }
 }

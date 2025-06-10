@@ -19,7 +19,7 @@ class RestablecerContraLogin: AppCompatActivity() {
     private lateinit var inputClaveRepeat: EditText
     private lateinit var btnRestablecerContra: Button
     private lateinit var btnVolver: Button
-    private lateinit var vistaContenidoRestablecerContraLogin: View
+    private lateinit var viewContenidoRestablecerContraLogin: View
 
     private var controladorUsuario: UsuarioController? = null
     private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
@@ -38,25 +38,33 @@ class RestablecerContraLogin: AppCompatActivity() {
         inputClaveRepeat = findViewById(R.id.inputClaveContraRepeat)
         btnRestablecerContra = findViewById(R.id.btnRestablecerContra)
         btnVolver = findViewById(R.id.btnVolverContra)
-        vistaContenidoRestablecerContraLogin = findViewById(R.id.contenidoRestContraLogin)
+        viewContenidoRestablecerContraLogin = findViewById(R.id.contenidoRestContraLogin)
 
         btnRestablecerContra.setOnClickListener {
             val usuarioExtraido = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
             if (inputEmail.text.isEmpty() || inputClave.text.isEmpty() || inputClaveRepeat.text.isEmpty()) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoRestablecerContraLogin,"Verifique que los campos no se encuentren vacíos.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRestablecerContraLogin,"Verifica que los campos no se encuentren vacíos.")
                 return@setOnClickListener
             } else if (usuarioExtraido == null) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoRestablecerContraLogin,"No se ha encontrado el email proporcionado.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRestablecerContraLogin,"No se ha encontrado el email proporcionado.")
+                return@setOnClickListener
+            } else if (!(inputClave.text.length >= 4 && inputClave.text.length <= 12)) {
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRestablecerContraLogin, "Verifica que la contraseña contenga entre 4 y 12 caracteres.")
                 return@setOnClickListener
             } else if (!inputClave.text.toString().equals(inputClaveRepeat.text.toString())) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoRestablecerContraLogin,"Debes de introducir la contraseña igual en ambos campos.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRestablecerContraLogin,"Debes de introducir la contraseña igual en ambos campos.")
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@RestablecerContraLogin, Login::class.java)
-                val resultado = controladorUsuario!!.actualizarUsuarioClave(inputEmail.text.toString(), inputClave.text.toString())
-                if (resultado > 0) {
-                    setResult(Activity.RESULT_OK, intent)
-                    finish()
+                entidadesVentanaEmergentes!!.ventanaEmergenteAviso(this, viewContenidoRestablecerContraLogin, "¿Seguro que quieres restablecer la contraseña?") { redirigir ->
+                    if (redirigir) {
+                        val resultado = controladorUsuario!!.actualizarUsuarioClave(inputEmail.text.toString(), inputClave.text.toString())
+                        if (resultado > 0) {
+                            controladorUsuario!!.cerrar()
+                            setResult(Activity.RESULT_OK, intent)
+                            finish()
+                        }
+                    }
                 }
             }
         }

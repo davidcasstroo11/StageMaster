@@ -23,7 +23,7 @@ class Registro: AppCompatActivity() {
     private lateinit var inputClave: EditText
     private lateinit var btnRegistro: Button
     private lateinit var btnCancelar: Button
-    private lateinit var vistaContenidoRegistro: View
+    private lateinit var viewContenidoRegistro: View
 
     private var controladorUsuario: UsuarioController? = null
     private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
@@ -45,7 +45,7 @@ class Registro: AppCompatActivity() {
         inputClave = findViewById(R.id.inputClaveRegistro)
         btnRegistro = findViewById(R.id.btnRegistrar)
         btnCancelar = findViewById(R.id.btnCancelar)
-        vistaContenidoRegistro = findViewById(R.id.contenidoRegistro)
+        viewContenidoRegistro = findViewById(R.id.contenidoRegistro)
 
         btnRegistro.setOnClickListener {
             val usuarioExtraidoEmail = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
@@ -53,19 +53,23 @@ class Registro: AppCompatActivity() {
 
             if (inputNombre.text.isEmpty() || inputApellidos.text.isEmpty() || inputNombreUsuario.text.isEmpty() || inputNombreUsuario.text.isEmpty()
                 || inputEmail.text.isEmpty() || inputClave.text.isEmpty()) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoRegistro,"Verifique que los campos no se encuentren vacíos.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRegistro,"Verifica que los campos no se encuentren vacíos.")
                 return@setOnClickListener
             } else if (!inputEmail.text.contains("@gmail.com")){
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoRegistro,"Verifique que el email sea el correcto.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRegistro,"Verifica que el email sea el correcto.")
                 return@setOnClickListener
             } else if (usuarioExtraidoNombreUsuario != null) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoRegistro,"Ya existe ese nombre de usuario, elija otro.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRegistro,"Ya existe ese nombre de usuario, elija otro.")
                 return@setOnClickListener
             } else if (usuarioExtraidoEmail != null) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoRegistro,"Ya existe ese email, inicie sesión.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRegistro,"Ya existe ese email, inicie sesión.")
+                return@setOnClickListener
+            } else if (!(inputClave.text.length >= 4 && inputClave.text.length <= 12)) {
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoRegistro,"Verifica que la contraseña contenga entre 4 y 12 caracteres.")
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@Registro, MainActivity::class.java)
+                // Se inserta el nuevo usuario en la BBDD y se accede al sistema
                 val resultado = controladorUsuario!!.insertarUsuario(inputNombre.text.toString(), inputApellidos.text.toString(), inputNombreUsuario.text.toString(),
                     inputEmail.text.toString(), inputClave.text.toString())
                 val usuarioExtraido = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
@@ -75,6 +79,7 @@ class Registro: AppCompatActivity() {
                     intent.putExtra("usuarioLogueado", usuarioExtraido.nombreUsuario)
                     intent.putExtra("email", usuarioExtraido.email)
                     startActivity(intent)
+                    controladorUsuario!!.cerrar()
                 }
             }
         }

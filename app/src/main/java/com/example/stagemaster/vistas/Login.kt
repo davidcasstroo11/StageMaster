@@ -20,7 +20,7 @@ class Login: AppCompatActivity() {
     private lateinit var inputClave: EditText
     private lateinit var textRegistro: TextView
     private lateinit var textRestablecerContra: TextView
-    private lateinit var vistaContenidoLogin: View
+    private lateinit var viewContenidoLogin: View
 
     private var controladorUsuario: UsuarioController? = null
     private var entidadesVentanaEmergentes: EntidadVentanasEmergentes? = null
@@ -40,19 +40,20 @@ class Login: AppCompatActivity() {
         inputClave = findViewById(R.id.inputClaveLogin)
         textRegistro = findViewById(R.id.textRegistro)
         textRestablecerContra = findViewById(R.id.textRestablecerContraseñaLog)
-        vistaContenidoLogin = findViewById(R.id.contenidoLogin)
+        viewContenidoLogin = findViewById(R.id.contenidoLogin)
 
         btnAcceder.setOnClickListener {
+            // Verifica si encuentra un usuario con los parametros recibidos en UI
             val usuarioExtraido = controladorUsuario!!.selectUsuarios(inputEmail.text.toString())
 
             if (inputEmail.text.isEmpty() || inputClave.text.isEmpty()) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"Verifique que los campos no se encuentren vacíos.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoLogin,"Verifica que los campos no se encuentren vacíos.")
                 return@setOnClickListener
             } else if (usuarioExtraido == null) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"No se ha podido encontrar el email proporcionado. Registre un nuevo usuario.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoLogin,"No se ha podido encontrar el email proporcionado. Registra un nuevo usuario para acceder.")
                 return@setOnClickListener
             } else if (!usuarioExtraido.clave.equals(Hash.md5(inputClave.text.toString()))) {
-                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"Contraseña incorrecta, vuelva a intentarlo.")
+                entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoLogin,"Contraseña incorrecta, vuelva a intentarlo.")
                 return@setOnClickListener
             } else {
                 val intent = Intent(this@Login, MainActivity::class.java)
@@ -60,6 +61,7 @@ class Login: AppCompatActivity() {
                 intent.putExtra("apellidos", usuarioExtraido.apellidos)
                 intent.putExtra("usuarioLogueado", usuarioExtraido.nombreUsuario)
                 intent.putExtra("email", usuarioExtraido.email)
+                controladorUsuario!!.cerrar()
                 startActivity(intent)
             }
         }
@@ -72,7 +74,7 @@ class Login: AppCompatActivity() {
             startActivity(intent)
         }
         btnCerrarSesion.setOnClickListener {
-            entidadesVentanaEmergentes!!.ventanaEmergenteError(this, vistaContenidoLogin,"No es posible cerrar sesión en este momento.")
+            entidadesVentanaEmergentes!!.ventanaEmergenteError(this, viewContenidoLogin,"No es posible cerrar sesión en este momento.")
         }
     }
 }

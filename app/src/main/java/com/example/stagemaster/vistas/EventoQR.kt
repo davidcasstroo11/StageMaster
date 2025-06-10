@@ -49,11 +49,16 @@ class EventoQR: AppCompatActivity() {
         val usuarioExtraido = controladorUsuario.selectUsuarios(emailUsuario)
         val eventoExtraido = controladorEvento.selectEventosId(idEvento.toInt())
         if (usuarioExtraido != null && eventoExtraido != null) {
+            // Información que se muestra en la ventana
             textDatos.setText("${eventoExtraido.get(0).nombreArtista} en ${eventoExtraido.get(0).sede}(${eventoExtraido.get(0).pais})")
             textFecha.setText(eventoExtraido.get(0).fecha)
             val eventoSeleccionado = controladorMisEventos.selectMisEventosCod(eventoExtraido.get(0), usuarioExtraido)
+            // Se genera y muestra el codigo QR en la ventana actual
             val qr = generarQR(eventoSeleccionado.codReferencia)
             imageViewQR.setImageBitmap(qr)
+            controladorUsuario.cerrar()
+            controladorEvento.cerrar()
+            controladorMisEventos.cerrar()
         }
 
         btnVolver.setOnClickListener {
@@ -63,6 +68,11 @@ class EventoQR: AppCompatActivity() {
         }
     }
 
+    /**
+     * Método que permite generar un código QR en base al codigo de referencia que se genera
+     * @param codReferencia
+     * @return Devuelve un objeto BitMap que se genera con el parámetro recibido
+     */
     fun generarQR(codReferencia: String): Bitmap? {
         return try {
             val bitMatrix: BitMatrix = MultiFormatWriter().encode(codReferencia, BarcodeFormat.QR_CODE, 400, 400)

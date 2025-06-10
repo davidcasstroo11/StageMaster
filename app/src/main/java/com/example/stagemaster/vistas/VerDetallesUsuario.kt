@@ -34,8 +34,9 @@ class VerDetallesUsuario: AppCompatActivity() {
         apellidosLogin = intent.getStringExtra("apellidos").toString()
         usuarioLogin = intent.getStringExtra("usuarioLogueado").toString()
         emailLogin = intent.getStringExtra("email").toString()
-        val nombreCompleto = nombreLogin + " " + apellidosLogin
 
+        // Asignación de datos a los campos a mostrar en la ventana
+        val nombreCompleto = nombreLogin + " " + apellidosLogin
         inputNombreCompleto.setText(nombreCompleto)
         inputUsuario.setText(usuarioLogin)
         inputEmail.setText(emailLogin)
