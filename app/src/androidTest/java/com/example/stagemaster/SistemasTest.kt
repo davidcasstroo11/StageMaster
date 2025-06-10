@@ -21,7 +21,7 @@ class SistemasTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val contradorEvento = EventoController(context)
         val listaResultados = ArrayList<Evento>()
-        assertEquals(listaResultados, contradorEvento.selectEventosNombres("Maluma"))
+        assertEquals(listaResultados, contradorEvento.selectEventosNombresBuscar("Maluma"))
         if (listaResultados.size == 0) {
             println("${listaResultados.size} eventos mostrados")
         }
