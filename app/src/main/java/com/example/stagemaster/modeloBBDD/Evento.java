@@ -7,29 +7,26 @@ public class Evento {
     Double precio;
     String sede;
     String pais;
-    int entradas;
     String fecha;
     int foto;
     int idArtista;
 
-    public Evento(String nombreArtista, Double precio, String sede, String pais, int entradas, String fecha, int foto, int idArtista) {
+    public Evento(String nombreArtista, Double precio, String sede, String pais, String fecha, int foto, int idArtista) {
         this.nombreArtista = nombreArtista;
         this.precio = precio;
         this.sede = sede;
         this.pais = pais;
-        this.entradas = entradas;
         this.fecha = fecha;
         this.foto = foto;
         this.idArtista = idArtista;
     }
 
-    public Evento(int idEvento, String nombreArtista, Double precio, String sede, String pais, int entradas, String fecha, int foto, int idArtista) {
+    public Evento(int idEvento, String nombreArtista, Double precio, String sede, String pais, String fecha, int foto, int idArtista) {
         this.idEvento = idEvento;
         this.nombreArtista = nombreArtista;
         this.precio = precio;
         this.sede = sede;
         this.pais = pais;
-        this.entradas = entradas;
         this.fecha = fecha;
         this.foto = foto;
         this.idArtista = idArtista;
@@ -41,10 +38,6 @@ public class Evento {
 
     public Double getPrecio() {
         return precio;
-    }
-
-    public int getEntradas() {
-        return entradas;
     }
 
     public int getFoto() {
